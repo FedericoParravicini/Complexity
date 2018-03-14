@@ -1,2 +1,2 @@
 # Complexity
-Repository for Complexity Java-friendly
+Repository for Complexity Java
