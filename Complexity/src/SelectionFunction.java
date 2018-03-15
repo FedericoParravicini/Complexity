@@ -1,4 +1,4 @@
 
-public abstract class SelectionFunction {
-
+public abstract class SelectionFunction extends WcetGenerator {
+	
 }

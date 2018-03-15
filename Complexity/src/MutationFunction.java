@@ -1,4 +1,4 @@
 
-public abstract class MutationFunction {
+public abstract class MutationFunction extends WcetGenerator{
 
 }

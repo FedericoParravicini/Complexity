@@ -1,4 +1,4 @@
 
-public abstract class CrossoverFunction {
-
+public abstract class CrossoverFunction extends WcetGenerator {
+	
 }
