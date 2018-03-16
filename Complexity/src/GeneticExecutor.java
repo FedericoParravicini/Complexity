@@ -13,4 +13,14 @@ public class GeneticExecutor {
 		
 	}
 	
+	public void logPopulation() {
+		
+	}
+	
+	public void logPopulationStats() {
+		
+	}
+	
+	
+	
 }
