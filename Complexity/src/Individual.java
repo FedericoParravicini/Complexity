@@ -59,7 +59,7 @@ public class Individual {
 	}
 	
 
-	public void pc_to_constraint_set(int pc) {
+	public void pcToConstraintSet(int pc) {
 		
 	}
 	
