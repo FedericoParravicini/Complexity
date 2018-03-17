@@ -13,8 +13,7 @@ public class HallOfFame {
 	}
 	
 	public void update(int population) {
-		//
-		//
+		
 	}
 	
 	public Individual bestIndividual() {
@@ -22,7 +21,7 @@ public class HallOfFame {
 	}
 	
 	public void repr() {
-		//
+	
 	}
 	
 }

@@ -6,6 +6,7 @@ public abstract class SelectionFunction extends GeneticExecutor {
 	}
 	
 	/*
+	
 	public void constrainedWcetpp() {
 		
 	}
@@ -17,6 +18,7 @@ public abstract class SelectionFunction extends GeneticExecutor {
 	public void evaluate(){
 	
 	}
+	
 	*/
 	
 	public void localSearch() {

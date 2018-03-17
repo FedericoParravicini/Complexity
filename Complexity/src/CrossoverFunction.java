@@ -2,7 +2,7 @@
 public abstract class CrossoverFunction extends  GeneticExecutor {
 	
 	public void singlePointCrossover() {
-		
+	
 	}
 	
 	public void prefixCrossover() {
