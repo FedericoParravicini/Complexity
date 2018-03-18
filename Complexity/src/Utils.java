@@ -20,13 +20,13 @@ public abstract class Utils {
 	public void getModel() {
 		
 	}
-	//??python
+	
 	public void toPythonValue() {
 		
 	}
 	
 	public void conjuncts() {
-		
+		//GeneticExecutor -> pc_to_constraint_set
 	}
 	
 	public void modelToDict() {
@@ -42,15 +42,15 @@ public abstract class Utils {
 	}
 	
 	public void toSmt2() {
-		
+		//Class INDIVIDUAL -> __reduce__
 	}
 	
 	public void negate() {
-		
+		//CrossoverFunction -> union_crossover & MutationFunction -> negate_mutation
 	}
 	
 	public void modelDictToString() {
-		
+		//worst_case_model = model_dict_to_string(profiles[0].model)
 	}
 	
 	public void ppModelDict() {
@@ -90,7 +90,7 @@ public abstract class Utils {
 	}
 	
 	public void ppWcetProfiles() {
-		
+		//GenticExecutor -> run
 	}
 	
 	public void stopwatch() {
@@ -102,11 +102,11 @@ public abstract class Utils {
 	}
 	
 	public void mkNot() {
-		
+		//SelectionFunction -> localSearch
 	}
 	
 	public void mkAnd() {
-	
+		//(GeneticExecutor)ga_wcet_generator -> pc = mk_and(best_profile.get("pc"))
 	}
 	
 	public void mkImplies() {
@@ -114,7 +114,7 @@ public abstract class Utils {
 	}
 	
 	public void solverAssert() {
-		
+		//(GeneticExecutor)ga_wcet_generator -> solver_assert(solver, pc)
 	}
 	
 	public void quickCheck() {
@@ -134,15 +134,15 @@ public abstract class Utils {
 	}
 	
 	public void isInconsistent() {
-		
+		//CrossoverFunction -> singlePointCrossover
 	}
 	
 	public void minimize() {
-		
+		//class INDIVIDUAL
 	}
 	
 	public void countInstructions() {
-		
+		//GeneticExecutor -> run
 	}
 	
 }
