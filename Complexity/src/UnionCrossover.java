@@ -1,5 +1,5 @@
 
-public abstract class UnionCrossover extends CrossoverFunction{
+public class UnionCrossover extends CrossoverFunction{
 	
 	Individual individual1;
 	Individual individual2;

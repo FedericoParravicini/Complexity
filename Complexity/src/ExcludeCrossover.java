@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public abstract class ExcludeCrossover extends CrossoverFunction{
+public class ExcludeCrossover extends CrossoverFunction{
 	
 	int rngSeed;
 	ArrayList<Individual> parents = new ArrayList<Individual>(2);

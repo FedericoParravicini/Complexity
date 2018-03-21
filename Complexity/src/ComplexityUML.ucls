@@ -55,16 +55,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="CrossoverFunction" project="Complexity" 
-    file="/Complexity/src/CrossoverFunction.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="168" width="194" x="752" y="661"/>    
-    <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="8" language="java" name="ExcludeCrossover" project="Complexity" 
+  <class id="7" language="java" name="ExcludeCrossover" project="Complexity" 
     file="/Complexity/src/ExcludeCrossover.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1162" y="432"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -73,7 +64,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="PrefixCrossover" project="Complexity" file="/Complexity/src/PrefixCrossover.java" 
+  <class id="8" language="java" name="PrefixCrossover" project="Complexity" file="/Complexity/src/PrefixCrossover.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1182" y="555"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -82,7 +73,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="SinglePointCrossover" project="Complexity" 
+  <class id="9" language="java" name="SinglePointCrossover" project="Complexity" 
     file="/Complexity/src/SinglePointCrossover.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1198" y="687"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -91,7 +82,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="UnionCrossover" project="Complexity" file="/Complexity/src/UnionCrossover.java" 
+  <class id="10" language="java" name="UnionCrossover" project="Complexity" file="/Complexity/src/UnionCrossover.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1200" y="816"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -100,7 +91,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="Utils" project="Complexity" file="/Complexity/src/Utils.java" binary="false" 
+  <class id="11" language="java" name="Utils" project="Complexity" file="/Complexity/src/Utils.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1401" y="303"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -109,7 +100,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="13" language="java" name="Symex" project="Complexity" file="/Complexity/src/Symex.java" binary="false" 
+  <interface id="12" language="java" name="Symex" project="Complexity" file="/Complexity/src/Symex.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1398" y="58"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -118,6 +109,15 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
+  <class id="13" language="java" name="CrossoverFunction" project="Complexity" 
+    file="/Complexity/src/CrossoverFunction.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="831" y="731"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
   <association id="14">    
     <end type="SOURCE" refId="4" navigable="false">      
       <attribute id="15" name="population"/>      
@@ -134,50 +134,50 @@
     <end type="TARGET" refId="6" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="20">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="7"/>  
-  </generalization>  
-  <association id="21">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="22" name="individual2"/>      
-      <multiplicity id="23" minimum="0" maximum="1"/>    
+  <association id="20">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="21" name="individual2"/>      
+      <multiplicity id="22" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="24">    
+  <association id="23">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="25" name="individual"/>      
-      <multiplicity id="26" minimum="0" maximum="1"/>    
+      <attribute id="24" name="individual"/>      
+      <multiplicity id="25" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="27">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="28" name="parents"/>      
-      <multiplicity id="29" minimum="0" maximum="2147483647"/>    
+  <association id="26">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="27" name="parents"/>      
+      <multiplicity id="28" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="30">    
+  <association id="29">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="31" name="population"/>      
-      <multiplicity id="32" minimum="0" maximum="2147483647"/>    
+      <attribute id="30" name="population"/>      
+      <multiplicity id="31" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="33">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="34" name="parents"/>      
-      <multiplicity id="35" minimum="0" maximum="2147483647"/>    
+  <association id="32">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="33" name="parents"/>      
+      <multiplicity id="34" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <generalization id="35">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
   <association id="36">    
     <end type="SOURCE" refId="3" navigable="false">      
       <attribute id="37" name="selectionFunction"/>      
@@ -187,7 +187,7 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="39">    
-    <end type="SOURCE" refId="10" navigable="false">      
+    <end type="SOURCE" refId="9" navigable="false">      
       <attribute id="40" name="parents"/>      
       <multiplicity id="41" minimum="0" maximum="2147483647"/>    
     </end>    
@@ -196,50 +196,50 @@
   </association>  
   <association id="42">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="43" name="crossoverFunction"/>      
+      <attribute id="43" name="hof"/>      
       <multiplicity id="44" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="45">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="7"/>  
-  </generalization>  
-  <association id="46">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="47" name="hof"/>      
-      <multiplicity id="48" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="49">    
+  <association id="45">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="50" name="mutationFunction"/>      
-      <multiplicity id="51" minimum="0" maximum="1"/>    
+      <attribute id="46" name="mutationFunction"/>      
+      <multiplicity id="47" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="52">    
+  <association id="48">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="49" name="crossoverFunction"/>      
+      <multiplicity id="50" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="51">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <generalization id="52">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="13"/>  
+  </generalization>  
+  <association id="53">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="53" name="bestIndividuals"/>      
-      <multiplicity id="54" minimum="0" maximum="2147483647"/>    
+      <attribute id="54" name="bestIndividuals"/>      
+      <multiplicity id="55" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="55">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="7"/>  
-  </generalization>  
   <generalization id="56">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="7"/>  
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="13"/>  
   </generalization>  
   <association id="57">    
-    <end type="SOURCE" refId="11" navigable="false">      
+    <end type="SOURCE" refId="10" navigable="false">      
       <attribute id="58" name="individual1"/>      
       <multiplicity id="59" minimum="0" maximum="1"/>    
     </end>    

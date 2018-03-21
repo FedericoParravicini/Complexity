@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public abstract class PrefixCrossover extends CrossoverFunction{
+public class PrefixCrossover extends CrossoverFunction{
 	
 	int rngSeed;
 	ArrayList<Individual> parents = new ArrayList<Individual>(2);

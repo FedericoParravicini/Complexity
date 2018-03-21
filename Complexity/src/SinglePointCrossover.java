@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public abstract class SinglePointCrossover extends CrossoverFunction{
+public class SinglePointCrossover extends CrossoverFunction{
 	
 	int rngSeed;
 	ArrayList<Individual> parents = new ArrayList<Individual>(2);
