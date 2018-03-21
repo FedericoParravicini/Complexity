@@ -1,50 +1,44 @@
+import java.util.ArrayList;
 
-public abstract class SelectionFunction extends GeneticExecutor {
+public abstract class SelectionFunction{
 	
+	ArrayList<Individual> population = new ArrayList<Individual>();
+	int n;
+	
+	public SelectionFunction(ArrayList<Individual> population, int n) {
+		super();
+		this.population = population;
+		this.n = n;
+	}
 	public void selection() {
 		
 	}
-	
 	/*
-	
 	public void constrainedWcetpp() {
 		
 	}
-	
-	public void randomIndividual() {
-		
-	}
-	
-	public void evaluate(){
-	
-	}
-	
 	*/
-	
 	public void localSearch() {
+		//????
+	}
+	
+	public void rankSelection() {
 		
 	}
 	
-	public void rank() {
+	public void rouletteSelection() {
 		
-	}
-	
-	public void rouletteWheelOld() {
+		/*
+		public void rouletteWheelOld() {
+			
+		}
 		
+		public void rouletteWheelDeltas() {
+			
+		}
+		*/
 	}
-	
-	public void rouletteWheelDeltas() {
-		
-	}
-	
-	public void rouletteWheel() {
-		
-	}
-	
-	public void elitism() {
-		
-	}
-	
+
 	public void survivalSelection() {
 		
 	}

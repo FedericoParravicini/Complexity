@@ -63,4 +63,20 @@ public class Individual {
 		
 	}
 	
+	public void getModel() {
+		
+	}
+	
+	public void minimize() {
+		
+	}
+		
+	public void countInstructions() {
+		
+	}
+
+	public void randomIndividual() {
+		
+	}
+	
 }

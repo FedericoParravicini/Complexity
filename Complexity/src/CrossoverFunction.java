@@ -1,20 +1,12 @@
 
-public abstract class CrossoverFunction extends  GeneticExecutor {
+public abstract class CrossoverFunction{
 	
-	public void singlePointCrossover() {
+	abstract void SinglePointCrossover();
 	
-	}
+	abstract void PrefixCrossover();
 	
-	public void prefixCrossover() {
-		
-	}
-	
-	public void excludeCrossover() {
-		
-	}
+	abstract void ExcludeCrossover();
 
-	public void unionCrossover() {
-		
-	}
+	abstract void UnionCrossover();
 	
 }

@@ -1,5 +1,17 @@
+import java.util.ArrayList;
 
-public abstract class FitnessFunction extends GeneticExecutor{
+public class FitnessFunction{
+	
+	ArrayList<String> constraintSet = new ArrayList<String>();
+
+	public FitnessFunction(ArrayList<String> constraintSet) {
+		super();
+		this.constraintSet = constraintSet;
+	}
+
+	public void evaluate(String constraintSet) {
+		
+	}
 	
 	public void estimateFitnessEvaluations(String config) {
 	
