@@ -1,3 +1,5 @@
+package complexity.ga.operators.mutation;
+import complexity.ga.Individual;
 
 public abstract class MutationFunction{
 	

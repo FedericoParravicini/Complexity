@@ -1,4 +1,7 @@
+package complexity.ga.operators.crossover;
 import java.util.ArrayList;
+
+import complexity.ga.Individual;
 
 public class SinglePointCrossover extends CrossoverFunction{
 	

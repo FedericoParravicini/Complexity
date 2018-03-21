@@ -1,3 +1,5 @@
+package complexity.ga.operators.crossover;
+import complexity.ga.Individual;
 
 public class UnionCrossover extends CrossoverFunction{
 	

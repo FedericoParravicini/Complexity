@@ -1,4 +1,8 @@
+package complexity.utils;
+
 import java.util.ArrayList;
+
+import complexity.ga.Individual;
 
 public class HallOfFame {
 	

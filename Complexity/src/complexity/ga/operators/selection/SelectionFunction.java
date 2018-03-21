@@ -1,4 +1,7 @@
+package complexity.ga.operators.selection;
 import java.util.ArrayList;
+
+import complexity.ga.Individual;
 
 public abstract class SelectionFunction{
 	
