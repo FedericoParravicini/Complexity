@@ -16,7 +16,7 @@ public class HallOfFame {
 		this.bestIndividuals = bestIndividuals;
 	}
 	
-	public void update(int population) {
+	public void update(ArrayList<Individual> population) {
 		
 	}
 	

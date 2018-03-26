@@ -4,12 +4,28 @@ import java.util.ArrayList;
 public class Individual {
 	
 	//__init__
-	ArrayList<String> constraintSet = new ArrayList<String>();
-	int fitness = 0;
+	public ArrayList<String> constraintSet = new ArrayList<String>();
+	public int fitness;
 	
 	public Individual(ArrayList<String> constraintSet, int fitness) {
 		super();
 		this.constraintSet = constraintSet;
+		this.fitness = fitness;
+	}
+
+	public ArrayList<String> getConstraintSet() {
+		return constraintSet;
+	}
+
+	public void setConstraintSet(ArrayList<String> constraintSet) {
+		this.constraintSet = constraintSet;
+	}
+
+	public int getFitness() {
+		return fitness;
+	}
+
+	public void setFitness(int fitness) {
 		this.fitness = fitness;
 	}
 

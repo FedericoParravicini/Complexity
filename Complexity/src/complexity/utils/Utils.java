@@ -1,5 +1,7 @@
 package complexity.utils;
 
+import java.util.*;
+
 public abstract class Utils {
 	
 	public void conjuncts() {
@@ -30,8 +32,23 @@ public abstract class Utils {
 		
 	}
 	
-	public void ppWcetProfiles() {
-		//GenticExecutor -> run
+	public static void ppWcetProfiles(ArrayList<String> profiles) {
+		/*
+		 """Print the input profiles.
+
+    	Args:
+        profiles (:iterable:PathProfile): The profiles.
+    	"""
+    	for(int i=0; i < profiles.size(); i++){
+        	System.out.println("id: i");
+        	System.out.println("cost: {profile.cost!r}");
+        	System.out.println("complete: {profile.complete!r}");
+        	System.out.println("path: {profile.path!r}");
+        	System.out.println("pc: {profile.pc!r}");
+        	pp_model_dict(profile.model);
+        	System.out.println();
+        	}
+		 */
 	}
 			
 	public void mkNot() {
