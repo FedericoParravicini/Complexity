@@ -1,17 +1,13 @@
 package complexity.ga.operators.crossover;
-import java.util.ArrayList;
 
 import complexity.ga.Individual;
 
 public class PrefixCrossover extends CrossoverFunction{
 	
-	int rngSeed;
-	ArrayList<Individual> parents = new ArrayList<Individual>(2);
-	
-	public PrefixCrossover(int rngSeed, ArrayList<Individual> parents) {
-		super();
-		this.rngSeed = rngSeed;
-		this.parents = parents;
+	@Override
+	public void crossover(Individual p1, Individual p2) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

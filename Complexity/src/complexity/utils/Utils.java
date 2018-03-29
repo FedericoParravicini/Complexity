@@ -2,85 +2,83 @@ package complexity.utils;
 
 import java.util.*;
 
+import complexity.ga.Individual;
+
 public abstract class Utils {
 	
-	public void conjuncts() {
-		//GeneticExecutor -> pc_to_constraint_set
+	public static void conjuncts() {
+		//TODO:
 	}
 	
-	public void toSmt2() {
-		//Class INDIVIDUAL -> __reduce__
+	public static void toSmt2() {
+		//TODO:
 	}
 	
-	public void negate() {
-		//CrossoverFunction -> union_crossover & MutationFunction -> negate_mutation
+	public static void negate() {
+		//TODO: CrossoverFunction -> unionCrossover & MutationFunction -> negateMutation
 	}
 			
-	public void assertInRange() {
-		
+	public static void assertInRange() {
+		//TODO:
 	}
 	
-	public void assertSorted() {
-		
+	public static void assertSorted() {
+		//TODO:
 	}
 	
-	public void assertAllDifferent() {
-		
+	public static void assertAllDifferent() {
+		//TODO:
 	}
 	
-	public void assertAllPositive() {
-		
+	public static void assertAllPositive() {
+		//TODO:
 	}
 	
-	public static void ppWcetProfiles(ArrayList<String> profiles) {
-		/*
-		 """Print the input profiles.
-
-    	Args:
-        profiles (:iterable:PathProfile): The profiles.
-    	"""
-    	for(int i=0; i < profiles.size(); i++){
-        	System.out.println("id: i");
-        	System.out.println("cost: {profile.cost!r}");
-        	System.out.println("complete: {profile.complete!r}");
-        	System.out.println("path: {profile.path!r}");
-        	System.out.println("pc: {profile.pc!r}");
-        	pp_model_dict(profile.model);
+	//Print the input profiles
+	public static void ppWcetProfiles(ArrayList<Individual> profiles) {
+    	for(int i = 0; i < profiles.size(); i++){
+        	System.out.println("id: " + i);
+        	System.out.println("cost: " + profiles.get(i).getFitness());
+        	//TODO:
+        	//System.out.println("complete: {profile.complete!r}");
+        	//System.out.println("path: {profile.path!r}");
+        	//System.out.println("pc: {profile.pc!r}");
+        	System.out.println(profiles.get(i).getModel());
         	System.out.println();
         	}
-		 */
-	}
-			
-	public void mkNot() {
-		//SelectionFunction -> localSearch
 	}
 	
-	public void mkAnd() {
-		//(GeneticExecutor)ga_wcet_generator -> pc = mk_and(best_profile.get("pc"))
+	//return the negation of the given constraint
+	public static void mkNot(String constraint) {
+		//TODO:
 	}
 	
-	public void mkImplies() {
-		
+	public static void mkAnd() {
+		//TODO: (GeneticExecutor)ga_wcet_generator -> pc = mkAnd(bestProfile.get("pc"))
 	}
 	
-	public void solverAssert() {
-		//(GeneticExecutor)ga_wcet_generator -> solver_assert(solver, pc)
+	public static void mkImplies() {
+		//TODO:
 	}
 	
-	public void isContradiction() {
-		
+	public static void solverAssert() {
+		//TODO: (GeneticExecutor)ga_wcet_generator -> solver_assert(solver, pc)
 	}
 	
-	public void isTautology() {
-		
+	public static void isContradiction() {
+		//TODO:
 	}
 	
-	public void isImplied() {
-		
+	public static void isTautology() {
+		//TODO:
 	}
 	
-	public void isInconsistent() {
-		//CrossoverFunction -> singlePointCrossover
+	public static void isImplied() {
+		//TODO:
+	}
+	
+	public static void isInconsistent() {
+		//TODO: CrossoverFunction -> singlePointCrossover
 	}
 
 }

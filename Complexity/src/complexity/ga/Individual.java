@@ -1,23 +1,26 @@
 package complexity.ga;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Individual {
-	
-	//__init__
-	public ArrayList<String> constraintSet = new ArrayList<String>();
+
+	public List<String> constraintSet = new ArrayList<>();
 	public int fitness;
 	
-	public Individual(ArrayList<String> constraintSet, int fitness) {
+	public Individual() {
+		super();
+	}
+	
+	public Individual(List<String> constraintSet, int fitness) {
 		super();
 		this.constraintSet = constraintSet;
 		this.fitness = fitness;
 	}
 
-	public ArrayList<String> getConstraintSet() {
+	public List<String> getConstraintSet() {
 		return constraintSet;
 	}
 
-	public void setConstraintSet(ArrayList<String> constraintSet) {
+	public void setConstraintSet(List<String> constraintSet) {
 		this.constraintSet = constraintSet;
 	}
 
@@ -29,11 +32,11 @@ public class Individual {
 		this.fitness = fitness;
 	}
 
-	public Individual fromStrings(String smt2_strings, int fitness) {
+	public Individual fromStrings(String smt2Strings, int fitness) {
 		//Args: smt2_strings (:iterable:string): An iterable of strings describing constraints in SMTLIB v2 format.
         //      fitness (int): The fitness of the individual.
 		//RETURN: An individual with the given constraints and fitness.
-		constraintSet.add("test");
+		//TODO:
 		Individual individual = new Individual(constraintSet, 1);
 		return individual;
 	}
@@ -67,21 +70,29 @@ public class Individual {
 	}
 	
 	public void reduce() {
-		//
-		//
+		//TODO:
 	}
-	
-	public void repr() {
-		System.out.println("Individual: " + this.fitness + this.constraintSet);
-	}
-	
 
 	public void pcToConstraintSet(int pc) {
 		
 	}
 	
-	public void getModel() {
-		
+	//Return the model stored by the given solver if it is available 
+	public String getModel() {
+		try {
+			return "test"; //TODO: return solver.model()
+		}
+		catch(Exception e) {
+			return null;
+		}
+	}
+	
+	//Clone an Individual object
+	public Individual cloneIndividual() {
+		Individual individualClone = new Individual();
+		individualClone.setConstraintSet(this.getConstraintSet());
+		individualClone.setFitness(this.getFitness());
+		return individualClone;
 	}
 	
 	public void minimize() {
@@ -92,8 +103,8 @@ public class Individual {
 		
 	}
 
-	public void randomIndividual() {
-		
+	public static Individual randomIndividual() {
+		return null;//TODO
 	}
 	
 }

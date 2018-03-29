@@ -1,14 +1,14 @@
 package complexity.utils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import complexity.ga.Individual;
 
 public class HallOfFame {
 	
-	//__init__
-	int n = 0;
-	ArrayList<Individual> bestIndividuals = new ArrayList<Individual>();
+	public int n = 0; //TODO:
+	public ArrayList<Individual> bestIndividuals = new ArrayList<Individual>();
 	
 	public HallOfFame(int n, ArrayList<Individual> bestIndividuals) {
 		super();
@@ -16,16 +16,12 @@ public class HallOfFame {
 		this.bestIndividuals = bestIndividuals;
 	}
 	
-	public void update(ArrayList<Individual> population) {
-		
+	public void update(List<Individual> offspring) {
+		//TODO:
 	}
 	
 	public Individual bestIndividual() {
 		return bestIndividuals.get(0);
-	}
-	
-	public void repr() {
-	
 	}
 	
 }
