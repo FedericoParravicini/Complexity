@@ -1,8 +1,12 @@
 package complexity.ga.algo;
 import java.util.*;
+
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 import java.lang.Math; 
 
-import org.apache.log4j.Logger;
+//import org.apache.log4j.Logger;
 
 import complexity.ga.FitnessFunction;
 import complexity.ga.Individual;
@@ -11,8 +15,10 @@ import complexity.utils.Utils;
 import complexity.utils.Config;
 
 public class GeneticExecutor {
+	//Setting the logger level go to -> log4j2.xml -> configuration -> loggers -> logger -> level
+	//and set one from: ALL > DEBUG > ERROR > FATAL > INFO > OFF > TRACE > WARN
 	
-	//TODO: static Logger log = Logger.getLogger(GeneticExecutor.class); -> JAVA EXCEPTION
+	private static final Logger logger = LogManager.getLogger(GeneticExecutor.class);
 	
 	private static ArrayList<Individual> population = new ArrayList<Individual>();
 	
@@ -21,7 +27,8 @@ public class GeneticExecutor {
 	}
 	
 	public static void logPopulation(ArrayList<Individual> population) {
-		//
+		//TODO:
+		//logger.debug(i + " " + individual);
 	}
 	
 	public static void logPopulationStats(List<Individual> offspring) {
@@ -36,7 +43,7 @@ public class GeneticExecutor {
         int minFitness = Collections.min(fitnesses);
         int maxFitness = Collections.max(fitnesses);
         int avgFitness = sum / fitnesses.size();
-        System.out.println("max: " + maxFitness + ", min: " + 
+        logger.info("max: " + maxFitness + ", min: " + 
         	minFitness + ", avg: " + avgFitness);
 	}
 	
@@ -68,22 +75,20 @@ public class GeneticExecutor {
 	    handler.setFormatter(formatter)
 
 	    logger.addHandler(handler)
-	    logger.setLevel(logging.DEBUG)
+	    logger.setLevel(DEBUG);
 		*/
-		
-		//Config config;
-		
-		System.out.println("configuration: ");
-		System.out.println("generations: " + Config.generations);
-		System.out.println("max estimated time: " + 
+
+		logger.info("Configuration: ");
+		logger.info("Generations: " + Config.generations);
+		logger.info("Max estimated time: " + 
 				FitnessFunction.estimateHours(Config.generations, Config.populationSize, Config.mutationProb, Config.timeout) + "hours");
-		System.out.println("max estimated fitness evaluations: " +
+		logger.info("Max estimated fitness evaluations: " +
 				FitnessFunction.estimateFitnessEvaluations(Config.generations, Config.populationSize, Config.mutationProb));
 		
 		ArrayList<Individual> profiles = new GeneticExecutor().wcetGenerator(); 
 		Utils.ppWcetProfiles(profiles);
 		
-    	System.out.println("worst case input: " + profiles.get(0).getConstraintSet().toString());
+    	System.out.println("Worst case input: " + profiles.get(0).getConstraintSet().toString());
     	//TODO: System.out.println("Worst case model: " + profiles[0].getModel().toString());
     	System.out.println("Worst case cost: " + profiles.get(0).getFitness());
 		
@@ -107,7 +112,7 @@ public class GeneticExecutor {
 		int eliteSize = (int) Math.round(Config.eliteRatio * Config.populationSize);
 		HallOfFame hof = new HallOfFame(5, null);
 		
-		System.out.println("generating initial population");
+		logger.debug("Generating initial population");
 		
 		/*
 		random_seeds = [rng.getrandbits(32) for _ in range(config.population_size)]
@@ -122,11 +127,11 @@ public class GeneticExecutor {
 		hof.update(population);
 		logPopulation(population);
 		
-		System.out.println("hall of fame:");
-        System.out.println(hof);
+		logger.debug("hall of fame:");
+        logger.debug(hof);
         
         for(int g = 0; g < Config.generations; g++) {    	
-        	System.out.println("generation {" + g + "}:");
+        	logger.info("generation {" + g + "}:");
             
         	ArrayList<Individual> elite = null;
             if(g % Config.localSearchRate == 0 && g > 0) {
@@ -137,7 +142,7 @@ public class GeneticExecutor {
                     population.remove(best);
                     population.add(optimizedBest);
                 }
-                System.out.println("local search stats:");
+                logger.debug("local search stats:");
                 logPopulationStats(population);
             }
             
@@ -176,7 +181,7 @@ public class GeneticExecutor {
             }
             hof.update(offspring);
             
-            System.out.println("offspring after crossover and mutation:");
+            logger.debug("offspring after crossover and mutation:");
             //log_population(offspring)
             logPopulationStats(offspring);
 
@@ -208,11 +213,11 @@ public class GeneticExecutor {
             population.addAll(elite);
             System.out.println("best: " + elite.get(0));
 
-            System.out.println("generation summary:");
+            logger.debug("generation summary: ");
             //log_population(population);
             logPopulationStats(population);
 
-            System.out.println("hall of fame:");
+            logger.debug("hall of fame: ");
             //logger.debug(hof);
 
             /*if(config.get("evolutionCsv") != null) {
@@ -229,7 +234,7 @@ public class GeneticExecutor {
 		*/
     	
         Individual bestIndividual = hof.bestIndividual();
-    	System.out.println("Best individual: " + bestIndividual);//logger.info('best individual: %s', best_individual); 
+    	logger.info("Best individual: " + bestIndividual);//logger.info('best individual: %s', best_individual); 
         //TODO: implementare la libreria log4j e sostituire i System.out con i logger (info, debug, ...)
         																
 
