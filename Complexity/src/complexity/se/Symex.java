@@ -12,4 +12,8 @@ public interface Symex {
 	public List<Constraint> randomWalkSymbolicExecution();
 
 	public List<Constraint> formulaSlicing(List<Constraint> formula, Constraint target);	
+	
+	public static Symex makeEngine() {
+		return new SymexStub();
+	}
 }
