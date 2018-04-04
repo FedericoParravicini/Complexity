@@ -10,6 +10,7 @@ import java.lang.Math;
 
 import complexity.ga.FitnessFunction;
 import complexity.ga.Individual;
+import complexity.localSearch.*;
 import complexity.utils.HallOfFame;
 import complexity.utils.Utils;
 import complexity.utils.Config;
@@ -131,13 +132,14 @@ public class GeneticExecutor {
         logger.debug(hof);
         
         for(int g = 0; g < Config.generations; g++) {    	
-        	logger.info("generation {" + g + "}:");
-            
-        	ArrayList<Individual> elite = null;
-            if(g % Config.localSearchRate == 0 && g > 0) {
-            	
+        	logger.info("generation {" + g + "}:");       
+        	ArrayList<Individual> elite = null; //TODO
+            if(g % Config.localSearchRate == 0 && g > 0) {     	
                 Individual best = elite.get(0);
-                Individual optimizedBest = best; //TODO: local_search(best)
+           
+                LocalSearchAlgorithm lsa = LocalSearchAlgorithm.makeLocalSearch();              
+                Individual optimizedBest = lsa.localSearch(best);
+                
                 if (optimizedBest.getFitness() > best.getFitness()) {
                     population.remove(best);
                     population.add(optimizedBest);

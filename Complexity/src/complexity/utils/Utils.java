@@ -3,6 +3,7 @@ package complexity.utils;
 import java.util.*;
 
 import complexity.ga.Individual;
+import complexity.se.Constraint;
 
 public abstract class Utils {
 	
@@ -49,7 +50,7 @@ public abstract class Utils {
 	}
 	
 	//return the negation of the given constraint
-	public static void mkNot(String constraint) {
+	public static void mkNot(Constraint constraint) {
 		//TODO:
 	}
 	

@@ -3,8 +3,8 @@ package complexity.localSearch;
 import java.util.*;
 
 import complexity.ga.Individual;
-import complexity.utils.Config;
-import complexity.utils.Utils;
+import complexity.se.*;
+import complexity.utils.*;
 
 public class LocalSearch extends LocalSearchAlgorithm{
 
@@ -16,13 +16,15 @@ public class LocalSearch extends LocalSearchAlgorithm{
 		System.out.println("Local search starts at index " + index);
 		while(remainingAttempts > 0) {
 			remainingAttempts --;
-			List<String> currentConstraints = new ArrayList<>();
-			currentConstraints = individual.getConstraintSet();
-			Utils.mkNot(currentConstraints.get(index));
-			/*
-			PYTHON->
-			se = RandomWalkSymbolicExecutor(rng)
-            se.preconditions = current_constraints
+			
+			List<Constraint> currentConstraints = individual.getConstraintSet();
+			
+			currentConstraints.get(index).mkNot();
+
+			Symex sym = Symex.makeEngine();
+			List<Constraint> se = sym.randomWalkSymbolicExecution(currentConstraints);
+
+            /*
 			profiles = wcetpp(se, f, args, kwargs); 
 			if profiles:
                 profile = rng.choice(profiles)

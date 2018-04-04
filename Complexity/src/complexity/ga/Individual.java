@@ -1,26 +1,28 @@
 package complexity.ga;
 import java.util.*;
 
+import complexity.se.Constraint;
+
 public class Individual {
 
-	public List<String> constraintSet = new ArrayList<>();
+	public List<Constraint> constraintSet = new ArrayList<>();
 	public int fitness;
 	
 	public Individual() {
 		super();
 	}
 	
-	public Individual(List<String> constraintSet, int fitness) {
+	public Individual(List<Constraint> constraintSet, int fitness) {
 		super();
 		this.constraintSet = constraintSet;
 		this.fitness = fitness;
 	}
 
-	public List<String> getConstraintSet() {
+	public List<Constraint> getConstraintSet() {
 		return constraintSet;
 	}
 
-	public void setConstraintSet(List<String> constraintSet) {
+	public void setConstraintSet(List<Constraint> constraintSet) {
 		this.constraintSet = constraintSet;
 	}
 
