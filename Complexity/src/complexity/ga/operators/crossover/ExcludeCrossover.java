@@ -1,11 +1,14 @@
 package complexity.ga.operators.crossover;
 
+import java.util.ArrayList;
+
 import complexity.ga.Individual;
 
 public class ExcludeCrossover extends CrossoverFunction{
 
 	@Override
-	public void crossover(Individual p1, Individual p2) {
+	public ArrayList<Individual> crossover(Individual p1, Individual p2) {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}

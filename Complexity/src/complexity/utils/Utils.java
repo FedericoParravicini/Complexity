@@ -7,6 +7,13 @@ import complexity.se.Constraint;
 
 public abstract class Utils {
 	
+	//Extract a random Individual from an ArrayList
+	public static Individual getRandom(ArrayList<Individual> individuals) {
+	    int rnd = new Random().nextInt(individuals.size());
+	    return individuals.get(rnd);
+	}
+	
+	
 	public static void conjuncts() {
 		//TODO:
 	}
@@ -54,8 +61,9 @@ public abstract class Utils {
 		//TODO:
 	}
 	
-	public static void mkAnd() {
+	public static List<Constraint> mkAnd(List<Constraint> refs) {
 		//TODO: (GeneticExecutor)ga_wcet_generator -> pc = mkAnd(bestProfile.get("pc"))
+		return null;
 	}
 	
 	public static void mkImplies() {
@@ -66,20 +74,24 @@ public abstract class Utils {
 		//TODO: (GeneticExecutor)ga_wcet_generator -> solver_assert(solver, pc)
 	}
 	
-	public static void isContradiction() {
-		//TODO:
+	public static boolean isContradiction(Constraint constraint) {
+		//TODO: return quick_check([c]) == z3.unsat
+		return true;
 	}
 	
-	public static void isTautology() {
-		//TODO:
+	public static boolean isTautology(Constraint constraint) {
+		//TODO: return quick_check([mk_not(c)]) == z3.unsat
+		return true;
 	}
 	
-	public static void isImplied() {
-		//TODO:
+	public static boolean isImplied(Constraint constraint) {
+		//TODO: return is_tautology(mk_implies(mk_and(constraint_set), c))
+		return true;
 	}
 	
-	public static void isInconsistent() {
-		//TODO: CrossoverFunction -> singlePointCrossover
+	public static boolean isInconsistent(List<Constraint> constraintSet) {
+		//TODO: return isContradiction(mkAnd(constraintSet));
+		return true;
 	}
 
 }

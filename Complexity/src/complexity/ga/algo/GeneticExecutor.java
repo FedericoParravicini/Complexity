@@ -236,8 +236,7 @@ public class GeneticExecutor {
 		*/
     	
         Individual bestIndividual = hof.bestIndividual();
-    	logger.info("Best individual: " + bestIndividual);//logger.info('best individual: %s', best_individual); 
-        //TODO: implementare la libreria log4j e sostituire i System.out con i logger (info, debug, ...)
+    	logger.info("Best individual: " + bestIndividual);
         																
 
         return hof.bestIndividuals; //constrained_wcetpp(best_individual.constraint_set)

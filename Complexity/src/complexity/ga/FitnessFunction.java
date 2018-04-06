@@ -1,9 +1,20 @@
 package complexity.ga;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import complexity.ga.algo.GeneticExecutor;
+import complexity.se.Constraint;
+import complexity.utils.Utils;
+
 public class FitnessFunction{
 
-	public void evaluate(String constraintSet) {
-		
+	public static Individual evaluate(List<Constraint> constraintSet) {
+		//TODO
+        //profiles = constrained_wcetpp(constraint_set);
+        ArrayList<Individual> profiles = new GeneticExecutor().wcetGenerator();
+        Individual profile = Utils.getRandom(profiles);
+        return new Individual(/*pcToConstraintSet(profile.pc)*/ null, profile.getFitness());
 	}
 	
 	//Returns the estimated number of fitness evaluations to run `ga_wcet_generator` with the given configuration
