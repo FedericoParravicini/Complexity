@@ -4,11 +4,15 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+import complexity.ga.FitnessFunction;
 import complexity.ga.Individual;
 import complexity.se.Constraint;
 import complexity.utils.Config;
+import complexity.utils.Utils;
 
 public abstract class MutationFunction{
+	
+    private static Random rng = new Random();
 
 	public static Individual deleteMutation(Individual individual, double ratio) {
 		int nTargets = (int) Math.round(ratio * individual.getConstraintSet().size());
@@ -17,7 +21,7 @@ public abstract class MutationFunction{
             int index = ThreadLocalRandom.current().nextInt(0, childConstraints.size() - 1);
             childConstraints.remove(index);
             }
-        Individual child = null; //TODO child = evaluate(tuple(child_constraints))
+        Individual child = FitnessFunction.evaluate(childConstraints);
         return child;
         }
 	
@@ -25,13 +29,12 @@ public abstract class MutationFunction{
 		int nConstraints = individual.getConstraintSet().size();
 		int nTargets = (int) Math.round(ratio * nConstraints);
 		List<Constraint> childConstraints = individual.getConstraintSet();
-		/*TODO:
-		for(int i = 0;;) { //TODO for index in rng.sample(range(nr_constraints), nr_targets)
-			Utils.negate(childConstraints.get(i));
+		for(int i = ThreadLocalRandom.current().nextInt(0, nConstraints); i < nTargets; i++) { //TODO for index in rng.sample(range(nr_constraints), nr_targets)
+			//Utils.negate(childConstraints.get(i));
 			if(Utils.isInconsistent(childConstraints)) {
-				Utils.negate(childConstraints.get(i));
+				//Utils.negate(childConstraints.get(i));
 				}
-			}*/
+			}
         Individual child = null; //TODO child = evaluate(tuple(child_constraints));
         return child;
 		}
@@ -41,10 +44,9 @@ public abstract class MutationFunction{
         for(int i = 0; i < nTargets; i++){
             int index = ThreadLocalRandom.current().nextInt(0, childConstraints.size() - 1);
             childConstraints.remove(index);
-            /*TODO
-            if(rng.choice([True, False])){
+            if(rng.nextBoolean() ? true : false){
                 break;
-                }*/
+                }
             }
         return childConstraints;
         }
@@ -63,7 +65,7 @@ public abstract class MutationFunction{
 		Random rng = new Random();
 		double ratio = 0.1;
 		if(rng.nextInt(seed) < Config.mutationProb) {
-            if(true/*TODO rng.choice([True, False])*/){
+            if(rng.nextBoolean() ? true : false){
                 return deleteMutation(individual, ratio);
             }else {
                 return negateMutation(individual, ratio);

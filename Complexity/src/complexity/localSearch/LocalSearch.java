@@ -38,7 +38,7 @@ public class LocalSearch extends LocalSearchAlgorithm{
                     individual.setFitness(profile.getFitness());
                     }
 				}
-				//TODO: else if(profile.getFitness() < individual.getFitness())
+				//TODO: else if(profile.getFitness() < individual.getFitness()) ??
             index = (index + 1) % individual.getConstraintSet().size();
 		}
 		return individual;

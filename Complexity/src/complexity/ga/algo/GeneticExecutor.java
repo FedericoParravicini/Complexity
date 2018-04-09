@@ -68,16 +68,7 @@ public class GeneticExecutor {
 	public static void main (String[] args){
 		/*
 		args = getattr(module_, configuration.args_gen)(configuration.size);
-		kwargs = getattr(module_, configuration.kwargs_gen)(configuration.size);
-
-	    # Set the logger to DEBUG level to capture intermediate output.
-	    formatter = logging.Formatter(fmt='[%(asctime)s] %(message)s', datefmt='%m/%d/%Y %H:%M:%S')
-	    handler = logging.StreamHandler()
-	    handler.setFormatter(formatter)
-
-	    logger.addHandler(handler)
-	    logger.setLevel(DEBUG);
-		*/
+		kwargs = getattr(module_, configuration.kwargs_gen)(configuration.size);*/
 
 		logger.info("Configuration: ");
 		logger.info("Generations: " + Config.generations);
