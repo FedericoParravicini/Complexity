@@ -24,20 +24,20 @@ public class ExcludeCrossover extends CrossoverFunction{
         List<Constraint> parent2Split2 = splitConstraints(Constraints2).get(1);
         List<Constraint> parent2Split3 = splitConstraints(Constraints2).get(2);
         
-		/*
+		/*TODO
         options = (
             (parent1_split1, parent2_split1),
             (parent1_split2, parent2_split2),
             (parent1_split3, parent2_split3),
         )
 
-        choices = rng.sample(options, k=2)
-        child1_contraints = combine(choices[0][0], choices[1][1])
-        child2_contraints = combine(choices[1][0], choices[0][1])
+        choices = rng.sample(options, k=2); //usare (rng.nextBoolean() ? parent2Split1 : parent2Split2)
+        child1_contraints = combine(choices[0][0], choices[1][1]);
+        child2_contraints = combine(choices[1][0], choices[0][1]);
 
-        child1 = evaluate(tuple(child1_contraints))
-        child2 = evaluate(tuple(child2_contraints))
-        return child1, child2
+        child1 = evaluate(tuple(child1_contraints));
+        child2 = evaluate(tuple(child2_contraints));
+        return child1, child2;
 		 */
 		return null;
 	}

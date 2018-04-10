@@ -51,7 +51,6 @@ public class GeneticExecutor {
 	//Sort population by fitness value and return the first n individuals of the population
 	private ArrayList<Individual> elitism(ArrayList<Individual> population, int n) {
 		ArrayList<Individual> populationSorted = new ArrayList<>();
-		//population sorted by fitness
 		Collections.sort(population, new Comparator<Individual>() {
 			@Override
 			public int compare (Individual ind2, Individual ind1) {
@@ -144,8 +143,7 @@ public class GeneticExecutor {
                 ((PrintStream) config.get("evolutionCsv")).flush();
             }*/
             
-            //Selection
-            
+            //SELECTION 
             ArrayList<Individual> parents;
             parents = Config.selectionFunction.selection(population, (int) Math.round(Config.populationSize / 2));
             System.out.println("parents");
@@ -162,7 +160,8 @@ public class GeneticExecutor {
             	writeIndividualsToCsv(csvWriter, g, "selection", parentsPopulation);
             	((PrintStream) config.get("evolutionCsv")).flush();
             }*/      
-
+            
+            //CROSSOVER
             List<Individual> offspring = new ArrayList<>();
             Iterator<Individual> parentIterator = parents.iterator();
             while (parentIterator.hasNext()) {

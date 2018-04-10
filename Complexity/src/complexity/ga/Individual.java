@@ -2,6 +2,7 @@ package complexity.ga;
 import java.util.*;
 
 import complexity.se.Constraint;
+import complexity.utils.Utils;
 
 public class Individual {
 
@@ -72,11 +73,13 @@ public class Individual {
 	}
 	
 	public void reduce() {
-		//TODO:
+		//TODO
 	}
 
-	public void pcToConstraintSet(int pc) {
-		
+	public List<Constraint> pcToConstraintSet(int pc) {
+		//TODO
+		List<Constraint> formula = new ArrayList<>();
+		return formula;
 	}
 	
 	//Return the model stored by the given solver if it is available 
@@ -97,12 +100,21 @@ public class Individual {
 		return individualClone;
 	}
 	
-	public void minimize() {
-		
+	public List<Constraint> minimize(List<Constraint> constraintSet) {
+		int i = 0;
+		while(i < constraintSet.size()) {
+			//TODO
+			if (Utils.isImplied(constraintSet.get(i)/*, constraint_set[:i] + constraint_set[i+1:]*/)) {
+				constraintSet.remove(i);
+			}else {
+				i ++;
+			}
+		}
+		return constraintSet;
 	}
 		
 	public void countInstructions() {
-		
+		//TODO
 	}
 
 	public static Individual randomIndividual() {
