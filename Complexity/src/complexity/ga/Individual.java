@@ -2,6 +2,7 @@ package complexity.ga;
 import java.util.*;
 
 import complexity.se.Constraint;
+import complexity.se.Model;
 import complexity.utils.Utils;
 
 public class Individual {
@@ -83,13 +84,8 @@ public class Individual {
 	}
 	
 	//Return the model stored by the given solver if it is available 
-	public String getModel() {
-		try {
-			return "test"; //TODO: return solver.model()
-		}
-		catch(Exception e) {
-			return null;
-		}
+	public Model getModel() {
+		return new Model(constraintSet);
 	}
 	
 	//Clone an Individual object

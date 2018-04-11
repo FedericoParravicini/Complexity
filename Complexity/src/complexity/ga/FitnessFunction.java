@@ -1,20 +1,18 @@
 package complexity.ga;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import complexity.ga.algo.GeneticExecutor;
 import complexity.se.Constraint;
-import complexity.utils.Utils;
+import complexity.se.Symex;
 
 public class FitnessFunction{
 
 	public static Individual evaluate(List<Constraint> constraintSet) {
-		//TODO
-        //profiles = constrained_wcetpp(constraint_set);
-        ArrayList<Individual> profiles = new GeneticExecutor().wcetGenerator();
-        Individual profile = Utils.getRandom(profiles);
-        return new Individual(/*pcToConstraintSet(profile.pc)*/ null, profile.getFitness());
+		Symex se = Symex.makeEngine();
+		
+		List<Constraint> pc = se.randomWalkSymbolicExecution(constraintSet);
+		
+        return new Individual(pc, se.getInstructionCount());
 	}
 	
 	//Returns the estimated number of fitness evaluations to run `ga_wcet_generator` with the given configuration

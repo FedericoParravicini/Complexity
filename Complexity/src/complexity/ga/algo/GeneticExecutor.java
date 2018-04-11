@@ -105,11 +105,6 @@ public class GeneticExecutor {
 		
 		logger.debug("Generating initial population");
 		
-		/*
-		random_seeds = [rng.getrandbits(32) for _ in range(config.population_size)]
-		with NonDaemonicPool(config.pool_size) as p:
-		     population = p.map(random_ind.vidual, random_seeds)
-		*/
 		for (int i = 0; i < Config.populationSize; i++) {
 			population.add(Individual.randomIndividual());
 		}
@@ -127,7 +122,7 @@ public class GeneticExecutor {
             if(g % Config.localSearchRate == 0 && g > 0) {     	
                 Individual best = elite.get(0);
            
-                LocalSearchAlgorithm lsa = LocalSearchAlgorithm.makeLocalSearch();              
+                LocalSearchAlgorithm lsa = LocalSearchAlgorithm.makeLocalSearchHillClimbing();              
                 Individual optimizedBest = lsa.localSearch(best);
                 
                 if (optimizedBest.getFitness() > best.getFitness()) {
@@ -226,7 +221,7 @@ public class GeneticExecutor {
 		*/
     	
         Individual bestIndividual = hof.bestIndividual();
-    	logger.info("Best individual: " + bestIndividual);
+    		logger.info("Best individual: " + bestIndividual);
         																
 
         return hof.bestIndividuals; //constrained_wcetpp(best_individual.constraint_set)

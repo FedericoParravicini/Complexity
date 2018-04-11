@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SymexStub implements Symex {
+	
+	private int instructionCount = 0;
 
 	@Override
 	public List<Constraint> randomWalkSymbolicExecution(List<Constraint> precondition) {
 		List<Constraint> fakePathCondition = new ArrayList<>(precondition);
 		
 		fakePathCondition.addAll(randomWalkSymbolicExecution());
+		
+		instructionCount = fakePathCondition.size();
 		
 		return fakePathCondition;
 	}
@@ -23,12 +27,20 @@ public class SymexStub implements Symex {
 			fakePathCondition.add(new ConstraintStub());
 		}
 
+		instructionCount = fakePathCondition.size();
+
 		return fakePathCondition;
 	}
 
 	@Override
 	public List<Constraint> formulaSlicing(List<Constraint> formula, Constraint target) {
 		return formula;
+	}
+
+
+	@Override
+	public int getInstructionCount() {
+		return 0;
 	}
 
 }

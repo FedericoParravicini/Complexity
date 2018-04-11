@@ -1,5 +1,7 @@
 package complexity.se;
 
+import java.util.List;
+
 public class ConstraintStub extends Constraint {
 	
 	private static final String chars = "abcdefghijklmnopkrstuvwxyzabcdefghijklmnopkrstuvwxyzabcdefghijklmnopkrstuvwxyzabcdefghijklmnopkrstuvwxyz";
@@ -12,7 +14,7 @@ public class ConstraintStub extends Constraint {
 		theConstraint = chars.charAt(nextChar++) + " > 0";
 	}
 
-	private ConstraintStub(String constraint) {
+	ConstraintStub(String constraint) {
 		theConstraint = constraint;
 	}
 
@@ -24,6 +26,11 @@ public class ConstraintStub extends Constraint {
 	@Override
 	public Constraint mkNot() {
 		return new ConstraintStub("not (" + this.theConstraint + ")");
+	}
+
+	@Override
+	public boolean isInnconsistent(List<Constraint> slice) {
+		return false;
 	}	
 
 }

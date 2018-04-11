@@ -7,11 +7,12 @@ import complexity.ga.FitnessFunction;
 import complexity.ga.Individual;
 import complexity.ga.operators.mutation.MutationFunction;
 import complexity.se.Constraint;
+import complexity.se.Symex;
 
 public class SinglePointCrossover extends CrossoverFunction {
 
 	@Override
-	public ArrayList<Individual> crossover(Individual parent1, Individual parent2) {
+	public List<Individual> crossover(Individual parent1, Individual parent2) {
 		List<Constraint> constraints1 = parent1.getConstraintSet();
 		List<Constraint> constraints2 = parent2.getConstraintSet();
 		int cp1;
@@ -27,21 +28,9 @@ public class SinglePointCrossover extends CrossoverFunction {
 		}else {
 			cp2 = 0;
 		}
-		
-		List<Constraint> constr1 = new ArrayList<>();
-		List<Constraint> constr2 = new ArrayList<>();
-		int i = 0, j = 0;
-		while(i <= cp1) {
-			constr1.add(constraints1.get(i));
-			i++;
-		}
-		while(j <= cp2) {
-			constr2.add(constraints2.get(i));
-			j++;
-		}
-		
-        List<Constraint> childConstraints1 = combine(constr1, constr2);
-        List<Constraint> childConstraints2 = combine(constr2, constr1);
+				
+        List<Constraint> childConstraints1 = combine(constraints1.subList(0, cp1), constraints2.subList(cp2, constraints2.size()));
+        List<Constraint> childConstraints2 = combine(constraints2.subList(0, cp2), constraints1.subList(cp1, constraints1.size()));
         
         MutationFunction.mutationBis(childConstraints1);
         MutationFunction.mutationBis(childConstraints2);
@@ -57,26 +46,21 @@ public class SinglePointCrossover extends CrossoverFunction {
 	}
 	
 	private List<Constraint> combine(List<Constraint> constraints1, List<Constraint> constraints2){
-            List<Constraint> result = constraints1;
-            /*
-            resultAsClauses = [PcClause(constraint, False) for constraint in result];
-            for c in constraints2:
-                List<Constraint> slice = formulaSlicing(resultAsClauses, c);
-                if not slice:
-                    result.add(c);
-                    resultAsClauses.add(PcClause(c, False));
-                elif slice[0] == True:
-                    pass;
-                elif slice[0] == False:
-                    pass;
-                else:
-                    consistencyCheck = [clause.conditional for clause in slice];
-                    consistencyCheck.append(c);
-                    if not isInconsistent(consistencyCheck):
-                        result.add(c);
-                        resultAsClauses.add(PcClause(c, False));
-                        */
-            return result;
+		List<Constraint> result = new ArrayList<>(constraints1);
+
+		for (Constraint c2: constraints2) {
+			List<Constraint> slice = Symex.makeEngine().formulaSlicing(result, c2);
+
+			if (slice.isEmpty()) {
+				result.add(c2);
+			} else if (!slice.get(0).equals(Constraint.TRUE) && !slice.get(0).equals(Constraint.FALSE)) {
+				if (!c2.isInnconsistent(slice)) {
+					result.add(c2);                			
+				}
+			}
+		}
+
+		return result;
 	}
 		
 }

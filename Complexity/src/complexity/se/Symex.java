@@ -16,4 +16,6 @@ public interface Symex {
 	public static Symex makeEngine() {
 		return new SymexStub();
 	}
+	public int getInstructionCount();
+	
 }

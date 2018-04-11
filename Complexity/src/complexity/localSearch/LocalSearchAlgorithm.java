@@ -6,8 +6,8 @@ public abstract class LocalSearchAlgorithm {
 	
 	public abstract Individual localSearch(Individual individual);
 	
-	public static LocalSearchAlgorithm makeLocalSearch() {
-		return new LocalSearch();
+	public static LocalSearchAlgorithm makeLocalSearchHillClimbing() {
+		return new LocalSearchHillClimbing();
 	}
 	
 }

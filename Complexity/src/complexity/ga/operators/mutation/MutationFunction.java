@@ -39,7 +39,7 @@ public abstract class MutationFunction{
         return child;
 		}
 
-	public static List<Constraint> deleteMutationBis(List<Constraint> childConstraints, double ratio) {
+	public static void deleteMutationBis(List<Constraint> childConstraints, double ratio) {
 		int nTargets = (int) Math.round(ratio * childConstraints.size());
         for(int i = 0; i < nTargets; i++){
             int index = ThreadLocalRandom.current().nextInt(0, childConstraints.size() - 1);
@@ -48,18 +48,15 @@ public abstract class MutationFunction{
                 break;
                 }
             }
-        return childConstraints;
         }
 	
-	public static List<Constraint> mutationBis(List<Constraint> childConstraints) {
+	public static void mutationBis(List<Constraint> childConstraints) {
 		Random rng = new Random();
 		double ratio = 0.1;
         if(rng.nextInt() < Config.mutationProb) {
-            return deleteMutationBis(childConstraints, ratio);
-        }else {
-        	return childConstraints;
-        	}
+            deleteMutationBis(childConstraints, ratio);
         }
+	}
 	
 	public static Individual mutation(int seed, Individual individual) {
 		Random rng = new Random();
