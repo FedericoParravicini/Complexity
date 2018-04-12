@@ -7,13 +7,6 @@ import complexity.se.Constraint;
 
 public abstract class Utils {
 	
-	//Extract a random Individual from an ArrayList
-	public static Individual getRandom(ArrayList<Individual> individuals) {
-	    int rnd = new Random().nextInt(individuals.size());
-	    return individuals.get(rnd);
-	}
-	
-	
 	public static void conjuncts() {
 		//TODO:
 	}

@@ -6,12 +6,11 @@ import org.apache.log4j.Logger;
 
 import java.lang.Math; 
 
-//import org.apache.log4j.Logger;
-
 import complexity.ga.FitnessFunction;
 import complexity.ga.Individual;
 import complexity.localSearch.*;
 import complexity.utils.HallOfFame;
+import complexity.utils.RandomSingleton;
 import complexity.utils.Utils;
 import complexity.utils.Config;
 
@@ -68,7 +67,9 @@ public class GeneticExecutor {
 		/*
 		args = getattr(module_, configuration.args_gen)(configuration.size);
 		kwargs = getattr(module_, configuration.kwargs_gen)(configuration.size);*/
-
+		
+		RandomSingleton.getInstance().setSeed(5);
+		
 		logger.info("Configuration: ");
 		logger.info("Generations: " + Config.generations);
 		logger.info("Max estimated time: " + 
@@ -80,17 +81,13 @@ public class GeneticExecutor {
 		Utils.ppWcetProfiles(profiles);
 		
     	System.out.println("Worst case input: " + profiles.get(0).getConstraintSet().toString());
-    	//TODO: System.out.println("Worst case model: " + profiles[0].getModel().toString());
+    	System.out.println("Worst case model: " + profiles.get(0).getModel().toString());
     	System.out.println("Worst case cost: " + profiles.get(0).getFitness());
 		
 	}
 	
 
 	public ArrayList<Individual> wcetGenerator(){
-		
-		//Initialize the random number generator.
-		//int rng = random.Random();
-		//rng.seed(config.get("seed"));
 			    
 	    //Initialize the CSV writer.
 		//TODO: String csvWriter = null;

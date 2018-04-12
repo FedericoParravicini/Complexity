@@ -40,7 +40,7 @@ public class SymexStub implements Symex {
 
 	@Override
 	public int getInstructionCount() {
-		return 0;
+		return instructionCount;
 	}
 
 }

@@ -2,10 +2,10 @@ package complexity.ga.operators.crossover;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 import complexity.ga.Individual;
 import complexity.se.Constraint;
+import complexity.utils.RandomSingleton;
 import complexity.utils.Utils;
 
 public class ExcludeCrossover extends CrossoverFunction{
@@ -13,7 +13,6 @@ public class ExcludeCrossover extends CrossoverFunction{
 	@Override
 	public ArrayList<Individual> crossover(Individual parent1, Individual parent2) {
 
-		//rng.seed(random_seed)
 		List<Constraint> Constraints1 = parent1.getConstraintSet();
 		List<Constraint> Constraints2 = parent2.getConstraintSet();
 		
@@ -65,8 +64,8 @@ public class ExcludeCrossover extends CrossoverFunction{
             splitset.add(get2);
             return splitset;
         }else if(constraints.size() > 2){
-        	int point1 = ThreadLocalRandom.current().nextInt(1, constraints.size() - 2);
-        	int point2 = ThreadLocalRandom.current().nextInt(point1 + 1, constraints.size() - 1);
+        	int point1 = RandomSingleton.getInstance().nextInt(constraints.size() - 2) + 1;
+        	int point2 = RandomSingleton.getInstance().nextInt((constraints.size() - point1) + 1) + point1 + 1;
         	List<Constraint> set1 = new ArrayList<>();
         	List<Constraint> set12 = new ArrayList<>();
         	List<Constraint> set2 = new ArrayList<>();

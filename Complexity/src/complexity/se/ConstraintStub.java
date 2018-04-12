@@ -29,7 +29,7 @@ public class ConstraintStub extends Constraint {
 	}
 
 	@Override
-	public boolean isInnconsistent(List<Constraint> slice) {
+	public boolean isInconsistent(List<Constraint> slice) {
 		return false;
 	}	
 

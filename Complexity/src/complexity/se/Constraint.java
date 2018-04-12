@@ -12,6 +12,6 @@ public abstract class Constraint {
 	
 	public abstract Constraint mkNot();
 
-	public abstract boolean isInnconsistent(List<Constraint> slice); 	
+	public abstract boolean isInconsistent(List<Constraint> slice); 	
 
 }
