@@ -3,6 +3,7 @@ package complexity.ga.operators.crossover;
 import java.util.ArrayList;
 import java.util.List;
 
+import complexity.ga.FitnessFunction;
 import complexity.ga.Individual;
 import complexity.se.Constraint;
 import complexity.utils.RandomSingleton;
@@ -22,23 +23,27 @@ public class ExcludeCrossover extends CrossoverFunction{
         List<Constraint> parent2Split1 = splitConstraints(Constraints2).get(0);
         List<Constraint> parent2Split2 = splitConstraints(Constraints2).get(1);
         List<Constraint> parent2Split3 = splitConstraints(Constraints2).get(2);
+
+		List<List<Constraint>> options = new ArrayList<>();
+		options.add(parent1Split1);
+		options.add(parent2Split1);
+		options.add(parent1Split2);
+		options.add(parent2Split2);
+		options.add(parent1Split3);
+		options.add(parent2Split3);
+
+        List<List<Constraint>> choices = new ArrayList<>();
+        //TODO choices = rng.sample(options, k=2); //usare (rng.nextBoolean() ? parent2Split1 : parent2Split2)
+        //List<Constraint> child1Contraints = combine(choices[0][0], choices[1][1]);
+        //List<Constraint> child2Contraints = combine(choices[1][0], choices[0][1]);
+
+		//Individual child1 = FitnessFunction.evaluate(child1Constraints);
+        //Individual child2 = FitnessFunction.evaluate(child2Constraints);
         
-		/*TODO
-        options = (
-            (parent1_split1, parent2_split1),
-            (parent1_split2, parent2_split2),
-            (parent1_split3, parent2_split3),
-        )
-
-        choices = rng.sample(options, k=2); //usare (rng.nextBoolean() ? parent2Split1 : parent2Split2)
-        child1_contraints = combine(choices[0][0], choices[1][1]);
-        child2_contraints = combine(choices[1][0], choices[0][1]);
-
-        child1 = evaluate(tuple(child1_contraints));
-        child2 = evaluate(tuple(child2_contraints));
-        return child1, child2;
-		 */
-		return null;
+        ArrayList<Individual> children = new ArrayList<>();
+        //children.add(child1);
+        //children.add(child2);
+        return children; //return child1, child2
 	}
 	
 	private List<List<Constraint>> splitConstraints(List<Constraint> constraints) {

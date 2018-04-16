@@ -109,9 +109,10 @@ public class GeneticExecutor {
 			population.add(Individual.randomIndividual());
 		}
 		
+		
+		logPopulation(population);
 		population = elitism(population, Config.populationSize);
 		hof.update(population);
-		logPopulation(population);
 		
 		logger.debug("hall of fame:");
 		for(int i = 0; i < hof.bestIndividuals.size(); i++) {
@@ -119,7 +120,7 @@ public class GeneticExecutor {
 		}
 
         for(int g = 0; g < Config.generations; g++) {    	
-        	logger.info("generation {" + g + "}:");       //TODO ELITE???
+        	logger.info("generation " + g + "}:");       //TODO ELITE???
             if(g % Config.localSearchRate == 0 && g > 0) {     	
                 Individual best = hof.bestIndividuals.get(0);
            

@@ -6,6 +6,7 @@ import java.util.List;
 import complexity.ga.FitnessFunction;
 import complexity.ga.Individual;
 import complexity.se.Constraint;
+import complexity.utils.Utils;
 
 public class UnionCrossover extends CrossoverFunction{
 
@@ -15,23 +16,24 @@ public class UnionCrossover extends CrossoverFunction{
 		List<Constraint> constraints1 = parent1.getConstraintSet();
 		List<Constraint> constraints2 = parent2.getConstraintSet();
 		
-		/*TODO
-		//all_constraints = constraints1 | constraints2
+		List<Constraint> allConstraints = new ArrayList<>();
+		allConstraints.addAll(constraints1);
+		allConstraints.addAll(constraints2);
 
         List<Constraint> childConstraints1 = new ArrayList<>();
         List<Constraint> childConstraints2 = new ArrayList<>();
-        while(all_constraints) {
-            c = all_constraints.pop();
-            not_c = negate(c);
-            if(not_c in all_constraints){
-                all_constraints.remove(not_c);
-                genes = [c, not_c];
-                config.random.shuffle(genes);
-                child_constraints1.append(genes[0]);
-                child_constraints2.append(genes[1]);
+        while(!allConstraints.isEmpty()) {
+            Constraint c = allConstraints.remove(allConstraints.size() - 1);
+            Constraint notC = Utils.negate(c);
+            if(allConstraints.contains(notC)){
+                allConstraints.remove(notC);
+                //TODO genes = [c, not_c];
+                //config.random.shuffle(genes);
+                //child_constraints1.append(genes[0]);
+                //child_constraints2.append(genes[1]);
             }else{
-                child_constraints1.addAll(c)
-                child_constraints2.addAll(c)
+                childConstraints1.add(c);
+                childConstraints2.add(c);
                 }
 		}
 		
@@ -42,8 +44,6 @@ public class UnionCrossover extends CrossoverFunction{
         children.add(child1);
         children.add(child2);
         return children; //return child1, child2
-		 */
-		return null;
 	}
 	
 }
