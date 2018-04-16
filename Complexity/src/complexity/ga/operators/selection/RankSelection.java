@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import complexity.ga.Individual;
+import complexity.utils.RandomSingleton;
 
 public class RankSelection extends SelectionFunction {
 
@@ -37,7 +38,7 @@ public class RankSelection extends SelectionFunction {
         for(int i = 0; i < ranking.size(); i++){
         	rankSum = rankSum + ranking.get(i);
         }
-        int pick = 0; //rng.uniform(0, rank_sum)
+        int pick = RandomSingleton.getInstance().nextInt(rankSum + 1);
         int current = 0;
         Individual indSelected = new Individual(null, 0);
         for(int i = 0; i < ranking.size(); i++){

@@ -26,10 +26,10 @@ public abstract class MutationFunction{
 		int nConstraints = individual.getConstraintSet().size();
 		int nTargets = (int) Math.round(ratio * nConstraints);
 		List<Constraint> childConstraints = individual.getConstraintSet();
-		for(int i = RandomSingleton.getInstance().nextInt(nConstraints); i < nTargets; i++) { //TODO for index in rng.sample(range(nr_constraints), nr_targets)
-			//Utils.negate(childConstraints.get(i));
+		for(int i = RandomSingleton.getInstance().nextInt(nConstraints); i < nTargets; i++) {
+			Utils.negate(childConstraints.get(i));
 			if(Utils.isInconsistent(childConstraints)) {
-				//Utils.negate(childConstraints.get(i));
+				Utils.negate(childConstraints.get(i));
 				}
 			}
         Individual child = FitnessFunction.evaluate(childConstraints);

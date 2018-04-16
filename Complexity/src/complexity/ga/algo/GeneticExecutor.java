@@ -20,15 +20,14 @@ public class GeneticExecutor {
 	
 	private static final Logger logger = LogManager.getLogger(GeneticExecutor.class);
 	
-	private static ArrayList<Individual> population = new ArrayList<Individual>();
-	
 	public static void writeIndividualsToCsv(String csvWriter, int g, String string, ArrayList<Individual> population2) {
 		//
 	}
 	
 	public static void logPopulation(ArrayList<Individual> population) {
-		//TODO:
-		//logger.debug(i + " " + individual);
+		for(int i = 0; i < population.size(); i++) {
+			logger.debug(i + " " + population.get(i).toString());
+		}
 	}
 	
 	public static void logPopulationStats(List<Individual> offspring) {
@@ -48,9 +47,9 @@ public class GeneticExecutor {
 	}
 	
 	//Sort population by fitness value and return the first n individuals of the population
-	private ArrayList<Individual> elitism(ArrayList<Individual> population, int n) {
+	private static ArrayList<Individual> elitism(List<Individual> offspring, int n) {
 		ArrayList<Individual> populationSorted = new ArrayList<>();
-		Collections.sort(population, new Comparator<Individual>() {
+		Collections.sort(offspring, new Comparator<Individual>() {
 			@Override
 			public int compare (Individual ind2, Individual ind1) {
 				Integer ind = new Integer(ind1.fitness); 
@@ -58,7 +57,7 @@ public class GeneticExecutor {
 			}
 		});
 		for(int i = 0; i < n; i++) {
-			populationSorted.add(population.get(i));
+			populationSorted.add(offspring.get(i));
 		}
         return populationSorted;
 	}
@@ -73,11 +72,12 @@ public class GeneticExecutor {
 		logger.info("Configuration: ");
 		logger.info("Generations: " + Config.generations);
 		logger.info("Max estimated time: " + 
-				FitnessFunction.estimateHours(Config.generations, Config.populationSize, Config.mutationProb, Config.timeout) + "hours");
+				FitnessFunction.estimateHours(Config.generations, Config.populationSize, Config.mutationProb, Config.timeout) + " hours");
 		logger.info("Max estimated fitness evaluations: " +
 				FitnessFunction.estimateFitnessEvaluations(Config.generations, Config.populationSize, Config.mutationProb));
 		
-		ArrayList<Individual> profiles = new GeneticExecutor().wcetGenerator(); 
+		ArrayList<Individual> profiles = new ArrayList<>();
+		profiles = wcetGenerator(); 
 		Utils.ppWcetProfiles(profiles);
 		
     	System.out.println("Worst case input: " + profiles.get(0).getConstraintSet().toString());
@@ -87,7 +87,7 @@ public class GeneticExecutor {
 	}
 	
 
-	public ArrayList<Individual> wcetGenerator(){
+	public static ArrayList<Individual> wcetGenerator(){
 			    
 	    //Initialize the CSV writer.
 		//TODO: String csvWriter = null;
@@ -97,8 +97,11 @@ public class GeneticExecutor {
 			                                    lineterminator='\n');
 		else csvWriter.writeheader();
 		*/
+		
+		ArrayList<Individual> population = new ArrayList<Individual>();
+		
 		int eliteSize = (int) Math.round(Config.eliteRatio * Config.populationSize);
-		HallOfFame hof = new HallOfFame(5, null);
+		HallOfFame hof = new HallOfFame(5);
 		
 		logger.debug("Generating initial population");
 		
@@ -106,18 +109,19 @@ public class GeneticExecutor {
 			population.add(Individual.randomIndividual());
 		}
 		
-		
+		population = elitism(population, Config.populationSize);
 		hof.update(population);
 		logPopulation(population);
 		
 		logger.debug("hall of fame:");
-        logger.debug(hof);
-        
+		for(int i = 0; i < hof.bestIndividuals.size(); i++) {
+			logger.debug(hof.bestIndividuals.get(i).toString());
+		}
+
         for(int g = 0; g < Config.generations; g++) {    	
-        	logger.info("generation {" + g + "}:");       
-        	ArrayList<Individual> elite = null; //TODO
+        	logger.info("generation {" + g + "}:");       //TODO ELITE???
             if(g % Config.localSearchRate == 0 && g > 0) {     	
-                Individual best = elite.get(0);
+                Individual best = hof.bestIndividuals.get(0);
            
                 LocalSearchAlgorithm lsa = LocalSearchAlgorithm.makeLocalSearchHillClimbing();              
                 Individual optimizedBest = lsa.localSearch(best);
@@ -163,7 +167,7 @@ public class GeneticExecutor {
             	offspring.add(offspring1);
             	offspring.add(offspring2);
             }
-            hof.update(offspring);
+            offspring = elitism(offspring, offspring.size());
             
             logger.debug("offspring after crossover and mutation:");
             //log_population(offspring)
@@ -190,8 +194,9 @@ public class GeneticExecutor {
             #    config.evolution_csv.flush()
 			*/
             
-            population.addAll(offspring);
+            ArrayList<Individual> elite = new ArrayList<>();
             elite = elitism(population, eliteSize);
+            population.addAll(offspring);
             population.removeAll(elite);
             population = Config.selectionFunction.survivalSelection(population, Config.populationSize - eliteSize);
             population.addAll(elite);
@@ -217,10 +222,8 @@ public class GeneticExecutor {
         config.evolution_csv.flush()
 		*/
     	
-        Individual bestIndividual = hof.bestIndividual();
-    		logger.info("Best individual: " + bestIndividual);
+        logger.info("Best individual: " + hof.bestIndividuals.get(0));
         																
-
         return hof.bestIndividuals; //constrained_wcetpp(best_individual.constraint_set)
 		
 	}

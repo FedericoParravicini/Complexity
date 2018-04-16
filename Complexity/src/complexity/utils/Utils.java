@@ -4,8 +4,11 @@ import java.util.*;
 
 import complexity.ga.Individual;
 import complexity.se.Constraint;
+import complexity.se.Symex;
 
 public abstract class Utils {
+	
+	static Symex se = Symex.makeEngine();
 	
 	public static void conjuncts() {
 		//TODO:
@@ -15,8 +18,8 @@ public abstract class Utils {
 		//TODO:
 	}
 	
-	public static void negate() {
-		//TODO: CrossoverFunction -> unionCrossover & MutationFunction -> negateMutation
+	public static Constraint negate(Constraint c) {
+		return c.mkNot();
 	}
 			
 	public static void assertInRange() {
@@ -50,41 +53,36 @@ public abstract class Utils {
 	}
 	
 	//return the negation of the given constraint
-	public static void mkNot(Constraint constraint) {
-		//TODO:
+	public static Constraint mkNot(Constraint c) {
+		return c.mkNot();
 	}
 	
-	public static List<Constraint> mkAnd(List<Constraint> refs) {
-		//TODO: (GeneticExecutor)ga_wcet_generator -> pc = mkAnd(bestProfile.get("pc"))
-		return null;
+	public static Constraint mkAnd(List<Constraint> refs) {
+		return se.mkAnd(refs);
 	}
 	
-	public static void mkImplies() {
-		//TODO:
+	public static Constraint mkImplies(Constraint c1, Constraint c2) {
+		return se.boolRef(c1, c2);
 	}
 	
 	public static void solverAssert() {
 		//TODO: (GeneticExecutor)ga_wcet_generator -> solver_assert(solver, pc)
 	}
 	
-	public static boolean isContradiction(Constraint constraint) {
-		//TODO: return quick_check([c]) == z3.unsat
-		return true;
+	public static boolean isContradiction(Constraint c) {
+		return se.quickCheck(c);
 	}
 	
-	public static boolean isTautology(Constraint constraint) {
-		//TODO: return quick_check([mk_not(c)]) == z3.unsat
-		return true;
+	public static boolean isTautology(Constraint c) {
+		return se.quickCheck(c);
 	}
 	
-	public static boolean isImplied(Constraint constraint) {
-		//TODO: return is_tautology(mk_implies(mk_and(constraint_set), c))
-		return true;
+	public static boolean isImplied(List<Constraint> constraintSet, Constraint c) {
+		return isTautology(mkImplies(mkAnd(constraintSet), c));
 	}
 	
 	public static boolean isInconsistent(List<Constraint> constraintSet) {
-		//TODO: return isContradiction(mkAnd(constraintSet));
-		return true;
+		return isContradiction(mkAnd(constraintSet));
 	}
 
 }

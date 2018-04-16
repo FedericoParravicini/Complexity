@@ -14,7 +14,7 @@ public class ConstraintStub extends Constraint {
 		theConstraint = chars.charAt(nextChar++) + " > 0";
 	}
 
-	ConstraintStub(String constraint) {
+	public ConstraintStub(String constraint) {
 		theConstraint = constraint;
 	}
 

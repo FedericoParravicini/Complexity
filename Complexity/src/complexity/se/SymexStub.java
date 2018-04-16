@@ -43,4 +43,19 @@ public class SymexStub implements Symex {
 		return instructionCount;
 	}
 
+	@Override
+	public Constraint mkAnd(List<Constraint> refs) {
+		return refs.get(0);
+	}
+
+	@Override
+	public boolean quickCheck(Constraint c) {
+		return true;
+	}
+
+	@Override
+	public Constraint boolRef(Constraint c1, Constraint c2) {
+		return c1;
+	}
+	
 }

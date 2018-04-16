@@ -8,7 +8,7 @@ import complexity.ga.operators.selection.SelectionFunction;
 public class Config {
 	
 	public static final int generations = 0; //n° di generazioni che l’algoritmo deve eseguire
-	public static final int populationSize = 0; //n° di individui presenti nella popolazione
+	public static final int populationSize = 5; //n° di individui presenti nella popolazione
 	public static final CrossoverFunction crossoverFunction = new SinglePointCrossover(); //quale funzione di crossover sarà usata (prefix, exclude, singlepoint, union)
 	public static final SelectionFunction selectionFunction = new RankSelection(); //quale funzione di crossover sarà usata (prefix, exclude, singlepoint, union)
 	public static final int mutationProb = 0; //probabilità di applicare o meno l’operatore di mutazione agli individui generati
