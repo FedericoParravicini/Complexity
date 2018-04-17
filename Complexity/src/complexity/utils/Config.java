@@ -7,12 +7,12 @@ import complexity.ga.operators.selection.SelectionFunction;
 
 public class Config {
 	
-	public static final int generations = 0; //n° di generazioni che l’algoritmo deve eseguire
-	public static final int populationSize = 5; //n° di individui presenti nella popolazione
-	public static final CrossoverFunction crossoverFunction = new SinglePointCrossover(); //quale funzione di crossover sarà usata (prefix, exclude, singlepoint, union)
-	public static final SelectionFunction selectionFunction = new RankSelection(); //quale funzione di crossover sarà usata (prefix, exclude, singlepoint, union)
-	public static final int mutationProb = 0; //probabilità di applicare o meno l’operatore di mutazione agli individui generati
-	public static final int eliteRatio = 0; //n° individui migliori che vengono preservati (elite) in percentuale rispetto alla popolazione
+	public static final int generations = 10; //nï¿½ di generazioni che lï¿½algoritmo deve eseguire
+	public static final int populationSize = 10; //nï¿½ di individui presenti nella popolazione
+	public static final CrossoverFunction crossoverFunction = new SinglePointCrossover(); //quale funzione di crossover sarï¿½ usata (prefix, exclude, singlepoint, union)
+	public static final SelectionFunction selectionFunction = new RankSelection(); //quale funzione di crossover sarï¿½ usata (prefix, exclude, singlepoint, union)
+	public static final double mutationProb = 0.1; //probabilitï¿½ di applicare o meno lï¿½operatore di mutazione agli individui generati
+	public static final double eliteRatio = 0.1; //nï¿½ individui migliori che vengono preservati (elite) in percentuale rispetto alla popolazione
 	public static final int seed = 5; //un numero da usare come seed per il generatore di numeri random		   
 	public static final String evolutionCsv = null; //nome di un file per scrivere i risultati, per adesso potremmo ignorarlo	
 	public static final int timeout = 0;	

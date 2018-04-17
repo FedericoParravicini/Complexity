@@ -16,18 +16,18 @@ public class FitnessFunction{
 	}
 	
 	//Returns the estimated number of fitness evaluations to run `ga_wcet_generator` with the given configuration
-	public  static int estimateFitnessEvaluations(int generations, int populationSize, int mutationProb) {
+	public  static int estimateFitnessEvaluations(int generations, int populationSize, double mutationProb) {
 	    int g = generations;
 	    int p = populationSize;
-	    int mp = mutationProb;
-	    return Math.round(p * ((mp + 1) * g + 1));
+	    double mp = mutationProb;
+	    return (int)Math.round(p * ((mp + 1) * g + 1));
 	}
 	
-	public static int estimateSeconds(int generations, int popSize, int mutProb, int timeout) {
+	public static int estimateSeconds(int generations, int popSize, double mutProb, int timeout) {
 		return estimateFitnessEvaluations(generations, popSize, mutProb) * timeout;
 	}
 	
-	public static int estimateHours(int generations, int popSize, int mutProb, int timeout) {
+	public static int estimateHours(int generations, int popSize, double mutProb, int timeout) {
 		return estimateSeconds(generations, popSize, mutProb, timeout) / 3600;
 	}
 	

@@ -11,7 +11,7 @@ public class ConstraintStub extends Constraint {
 	
 	public ConstraintStub() {
 		super();
-		theConstraint = chars.charAt(nextChar++) + " > 0";
+		theConstraint = chars.charAt(nextChar++ % chars.length() ) + " > 0";
 	}
 
 	public ConstraintStub(String constraint) {
