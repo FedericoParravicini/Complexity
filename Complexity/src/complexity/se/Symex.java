@@ -18,4 +18,10 @@ public interface Symex {
 	}
 	public int getInstructionCount();
 	
+	public Constraint mkAnd(List<Constraint> refs);
+	
+	public boolean quickCheck(Constraint c);
+	
+	public Constraint boolRef(Constraint c1, Constraint c2);
+	
 }

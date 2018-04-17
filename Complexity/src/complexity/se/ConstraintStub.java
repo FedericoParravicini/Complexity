@@ -14,7 +14,7 @@ public class ConstraintStub extends Constraint {
 		theConstraint = chars.charAt(nextChar++) + " > 0";
 	}
 
-	ConstraintStub(String constraint) {
+	public ConstraintStub(String constraint) {
 		theConstraint = constraint;
 	}
 
@@ -29,7 +29,7 @@ public class ConstraintStub extends Constraint {
 	}
 
 	@Override
-	public boolean isInnconsistent(List<Constraint> slice) {
+	public boolean isInconsistent(List<Constraint> slice) {
 		return false;
 	}	
 

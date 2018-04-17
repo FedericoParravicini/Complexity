@@ -7,21 +7,15 @@ import complexity.ga.Individual;
 
 public class HallOfFame {
 	
-	public int n = 0; //TODO:
-	public ArrayList<Individual> bestIndividuals = new ArrayList<Individual>();
+	public int n;
+	public ArrayList<Individual> bestIndividuals = new ArrayList<>();
 	
-	public HallOfFame(int n, ArrayList<Individual> bestIndividuals) {
+	public HallOfFame(int n) {
 		super();
 		this.n = n;
-		this.bestIndividuals = bestIndividuals;
 	}
 	
-	public void update(List<Individual> offspring) {
-		//TODO:
+	public void update(List<Individual> population) {
+		bestIndividuals.addAll(population);
 	}
-	
-	public Individual bestIndividual() {
-		return bestIndividuals.get(0);
-	}
-	
 }

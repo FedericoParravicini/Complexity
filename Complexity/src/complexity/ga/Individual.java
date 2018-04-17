@@ -3,10 +3,11 @@ import java.util.*;
 
 import complexity.se.Constraint;
 import complexity.se.Model;
+import complexity.se.Symex;
 import complexity.utils.Utils;
 
 public class Individual {
-
+	
 	public List<Constraint> constraintSet = new ArrayList<>();
 	public int fitness;
 	
@@ -73,6 +74,11 @@ public class Individual {
 		return true;
 	}
 	
+	@Override
+	public String toString() {
+		return "Individual [fitness=" + fitness + ", constraintSet=" + constraintSet + "]";
+	}
+
 	public void reduce() {
 		//TODO
 	}
@@ -99,8 +105,14 @@ public class Individual {
 	public List<Constraint> minimize(List<Constraint> constraintSet) {
 		int i = 0;
 		while(i < constraintSet.size()) {
-			//TODO
-			if (Utils.isImplied(constraintSet.get(i)/*, constraint_set[:i] + constraint_set[i+1:]*/)) {
+			List<Constraint> sub1 = new ArrayList<>();
+			List<Constraint> sub2 = new ArrayList<>();
+			List<Constraint> sub = new ArrayList<>();
+			sub1.addAll(constraintSet.subList(0, i));
+			sub2.addAll(constraintSet.subList(i + 1, constraintSet.size() + 1));
+			sub.addAll(sub1);
+			sub.addAll(sub2);
+			if (Utils.isImplied(sub, constraintSet.get(i))) {
 				constraintSet.remove(i);
 			}else {
 				i ++;
@@ -114,7 +126,13 @@ public class Individual {
 	}
 
 	public static Individual randomIndividual() {
-		return null;//TODO
+		Symex se = Symex.makeEngine();
+		Individual individual = new Individual();
+		List<Constraint> constraintSet = se.randomWalkSymbolicExecution();
+		individual.setConstraintSet(constraintSet);
+		int fitness = se.getInstructionCount();
+		individual.setFitness(fitness);
+		return individual;
 	}
 	
 }

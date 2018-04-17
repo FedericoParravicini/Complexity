@@ -1,10 +1,8 @@
 package complexity.localSearch;
 
 import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
 
 import complexity.ga.Individual;
-import complexity.ga.algo.GeneticExecutor;
 import complexity.se.*;
 import complexity.utils.*;
 
@@ -12,7 +10,7 @@ public class LocalSearchHillClimbing extends LocalSearchAlgorithm {
 	
 	@Override
 	public Individual localSearch(Individual individual) {
-		int index = ThreadLocalRandom.current().nextInt(1, individual.getConstraintSet().size() - 1);
+		int index = RandomSingleton.getInstance().nextInt(individual.getConstraintSet().size() - 1) + 1;
 		int remainingAttempts = Config.populationSize / 2;
 		System.out.println("Local search starts at index " + index);		
 		while(remainingAttempts > 0) {
