@@ -66,9 +66,7 @@ public class GeneticExecutor {
 		/*
 		args = getattr(module_, configuration.args_gen)(configuration.size);
 		kwargs = getattr(module_, configuration.kwargs_gen)(configuration.size);*/
-		
-		RandomSingleton.getInstance().setSeed(Config.seed);
-		
+				
 		logger.info("Configuration: ");
 		logger.info("Generations: " + Config.generations);
 		logger.info("Max estimated time: " + 

@@ -8,6 +8,7 @@ public class RandomSingleton {
 
     private RandomSingleton() {
         rng = new Random();
+		rng.setSeed(Config.seed);        
     }
 
     public static RandomSingleton getInstance() {
@@ -22,13 +23,9 @@ public class RandomSingleton {
     }
     
     public int nextInt(int bound) {
-    	return rng.nextInt(bound);
+    		return rng.nextInt(bound);
     }
     
-    public void setSeed(long seed) {
-    	rng.setSeed(seed);
-    }
-
 	public boolean nextBoolean() {
 		return rng.nextBoolean();
 	}
