@@ -89,9 +89,4 @@ public abstract class Utils {
 		return true;
 	}
 	
-	public static boolean isInconsistent(List<Constraint> constraintSet) {
-		//TODO: return isContradiction(mkAnd(constraintSet));
-		return true;
-	}
-
 }
