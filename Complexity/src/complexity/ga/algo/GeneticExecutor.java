@@ -120,7 +120,7 @@ public class GeneticExecutor {
 		}
 
         for(int g = 0; g < Config.generations; g++) {    	
-        	logger.info("generation " + g + "}:");       //TODO ELITE???
+        	logger.info("generation " + g + "}:");       
             if(g % Config.localSearchRate == 0 && g > 0) {     	
                 Individual best = hof.bestIndividuals.get(0);
            
