@@ -40,7 +40,7 @@ public class RankSelection extends SelectionFunction {
         }
         int pick = RandomSingleton.getInstance().nextInt(rankSum + 1);
         int current = 0;
-        Individual indSelected = new Individual(null, 0);
+        Individual indSelected = individuals.get(0); //TODO
         for(int i = 0; i < ranking.size(); i++){
             current += ranking.get(i);
             if(current > pick) {

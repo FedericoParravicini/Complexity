@@ -1,6 +1,7 @@
 package complexity.ga;
 import java.util.*;
 
+import complexity.ga.algo.GeneticExecutor;
 import complexity.se.Constraint;
 import complexity.se.Model;
 import complexity.se.Symex;
@@ -11,12 +12,11 @@ public class Individual {
 	public List<Constraint> constraintSet = new ArrayList<>();
 	public int fitness;
 	
-	public Individual() {
-		super();
-	}
-	
 	public Individual(List<Constraint> constraintSet, int fitness) {
 		super();
+		if(constraintSet == null || constraintSet.isEmpty()){
+			throw new IllegalArgumentException("the constraint set can't be empty or null");
+		}
 		this.constraintSet = constraintSet;
 		this.fitness = fitness;
 	}
@@ -76,7 +76,7 @@ public class Individual {
 	
 	@Override
 	public String toString() {
-		return "Individual [fitness=" + fitness + ", constraintSet=" + constraintSet + "]";
+		return "Individual [fitness = " + fitness + ", constraintSet = " + constraintSet + "]";
 	}
 
 	public void reduce() {
@@ -96,10 +96,9 @@ public class Individual {
 	
 	//Clone an Individual object
 	public Individual cloneIndividual() {
-		Individual individualClone = new Individual();
-		individualClone.setConstraintSet(this.getConstraintSet());
-		individualClone.setFitness(this.getFitness());
-		return individualClone;
+		List<Constraint> ConstraintSet = this.getConstraintSet();
+		int fitness = this.getFitness();
+		return new Individual(ConstraintSet, fitness);
 	}
 	
 	public List<Constraint> minimize(List<Constraint> constraintSet) {
@@ -127,12 +126,9 @@ public class Individual {
 
 	public static Individual randomIndividual() {
 		Symex se = Symex.makeEngine();
-		Individual individual = new Individual();
 		List<Constraint> constraintSet = se.randomWalkSymbolicExecution();
-		individual.setConstraintSet(constraintSet);
 		int fitness = se.getInstructionCount();
-		individual.setFitness(fitness);
-		return individual;
+		return new Individual(constraintSet, fitness);
 	}
 	
 }

@@ -20,14 +20,14 @@ public class FitnessFunction{
 	    int g = generations;
 	    int p = populationSize;
 	    double mp = mutationProb;
-	    return (int)Math.round(p * ((mp + 1) * g + 1));
+	    return (int) Math.round(p * ((mp + 1) * g + 1));
 	}
 	
-	public static int estimateSeconds(int generations, int popSize, double mutProb, int timeout) {
+	public static double estimateSeconds(int generations, int popSize, double mutProb, int timeout) {
 		return estimateFitnessEvaluations(generations, popSize, mutProb) * timeout;
 	}
 	
-	public static int estimateHours(int generations, int popSize, double mutProb, int timeout) {
+	public static double estimateHours(int generations, int popSize, double mutProb, int timeout) {
 		return estimateSeconds(generations, popSize, mutProb, timeout) / 3600;
 	}
 	

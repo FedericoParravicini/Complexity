@@ -39,7 +39,7 @@ public abstract class Utils {
 	}
 	
 	//Print the input profiles
-	public static void ppWcetProfiles(ArrayList<Individual> profiles) {
+	public static void ppWcetProfiles(List<Individual> profiles) {
     	for(int i = 0; i < profiles.size(); i++){
         	System.out.println("id: " + i);
         	System.out.println("cost: " + profiles.get(i).getFitness());
