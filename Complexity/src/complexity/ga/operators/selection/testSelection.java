@@ -15,18 +15,22 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 @DisplayName("Selection test suite")
 public class testSelection {
 	
-	//TestSuite -> randomIndividual
-	@Test
-	@DisplayName("selection returns parents different from each other")
-	public void testSelection1() {
+	public ArrayList<Individual> parents() {
 		ArrayList<Individual> population = new ArrayList<>();
 		for (int i = 0; i < Config.populationSize; i++) {
 			population.add(Individual.randomIndividual());
 		}
 		ArrayList<Individual> parents = Config.selectionFunction.selection(population, (int) Math.round(Config.populationSize / 2));
+		return parents;
+	}
 
-		for(int i = 0, j = 1; i < parents.size(); i++, j++) {
-			assertNotEquals(parents.get(i), parents.get(j));
+	
+	//TestSuite -> randomIndividual
+	@Test
+	@DisplayName("selection returns parents different from each other")
+	public void testSelection1() {
+		for(int i = 0, j = 1; i < parents().size(); i++, j++) {
+			assertNotEquals(parents().get(i), parents().get(j));
 			i++;
 			j++;
 		}
@@ -35,27 +39,17 @@ public class testSelection {
 	@Test
 	@DisplayName("selection returns couples different from each other")
 	public void testSelection2() {
-		ArrayList<Individual> population = new ArrayList<>();
-		for (int i = 0; i < Config.populationSize; i++) {
-			population.add(Individual.randomIndividual());
-		}
-		ArrayList<Individual> parents = Config.selectionFunction.selection(population, (int) Math.round(Config.populationSize / 2));
-		
-		for(int i = 0; i < parents.size(); i++) {
-			Individual ind = parents.get(i).cloneIndividual();
-			parents.remove(parents.get(i));
-			assertFalse(parents.contains(ind));
-			parents.add(ind);
+		for(int i = 0; i < parents().size(); i++) {
+			Individual ind = parents().get(i).cloneIndividual();
+			parents().remove(parents().get(i));
+			assertFalse(parents().contains(ind));
+			parents().add(ind);
 		}
 	}
 	
 	//@Test TODO
 	@DisplayName("survivalSelection returns ...")
 	public void testSurvivalSelection1() {
-		ArrayList<Individual> population = new ArrayList<>();
-		for (int i = 0; i < Config.populationSize; i++) {
-			population.add(Individual.randomIndividual());
-		}
 		
 	}
 	
