@@ -116,22 +116,21 @@ public class GeneticExecutor {
 			logger.debug(i + ". " + hof.getBestIndividuals().get(i).toString());
 		}
 
-        for(int g = 0; g < Config.generations; g++) {    	
+        for(int g = 1; g <= Config.generations; g++) {    	
         	logger.info("generation " + g + " :");
-        	/*TODO LOCAL SEARCH genera un loop infinito
             if(g % Config.localSearchRate == 0 && g > 0) {     	
                 Individual best = hof.getBestIndividuals().get(0);
            
                 LocalSearchAlgorithm lsa = LocalSearchAlgorithm.makeLocalSearchHillClimbing();              
-                Individual optimizedBest = lsa.localSearch(best);
+                Individual optimizedBest = lsa.localSearch(best.cloneIndividual());
                 
                 if (optimizedBest.getFitness() > best.getFitness()) {
                     population.remove(best);
-                    population.add(optimizedBest);
+                    population.add(0, optimizedBest);
                 }
                 logger.debug("local search stats:");
                 logPopulationStats(population);
-            }*/
+            }
             
             /*if (config.get("evolutionCsv") != null){
             	writeIndividualsToCsv(csvWriter, g, "fitness", population);
