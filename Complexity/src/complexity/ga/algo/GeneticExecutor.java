@@ -128,6 +128,7 @@ public class GeneticExecutor {
                     population.remove(best);
                     population.add(0, optimizedBest);
                 }
+                
                 logger.debug("local search stats:");
                 logPopulationStats(population);
             }

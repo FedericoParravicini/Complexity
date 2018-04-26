@@ -16,8 +16,9 @@ public class Config {
 	public static final int seed = 5; //un numero da usare come seed per il generatore di numeri random		   
 	public static final String evolutionCsv = null; //nome di un file per scrivere i risultati, per adesso potremmo ignorarlo	
 	public static final int timeout = 1;	
+	public static final int localSearchRate = 5;
 	//int pool_size;
 	//random_search;
-	public static final int localSearchRate = 5;
+
 		
 }

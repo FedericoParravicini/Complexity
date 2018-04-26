@@ -14,6 +14,7 @@ public class LocalSearchHillClimbing extends LocalSearchAlgorithm {
 		int remainingAttempts = Config.populationSize / 2;
 		System.out.println("Local search starts at index " + index);		
 		while(remainingAttempts > 0) {
+			
 			remainingAttempts --;
 			List<Constraint> currentConstraints = individual.getConstraintSet();
 			Constraint mutatedConstraint = currentConstraints.get(index).mkNot();
