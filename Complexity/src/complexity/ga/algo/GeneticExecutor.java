@@ -4,6 +4,8 @@ import java.util.*;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.Math; 
 
 import complexity.ga.FitnessFunction;
@@ -11,6 +13,7 @@ import complexity.ga.Individual;
 import complexity.localSearch.*;
 import complexity.utils.HallOfFame;
 import complexity.utils.Utils;
+import complexity.utils.CSVUtils;
 import complexity.utils.Config;
 
 public class GeneticExecutor {
@@ -19,8 +22,8 @@ public class GeneticExecutor {
 	
 	private static final Logger logger = LogManager.getLogger(GeneticExecutor.class);
 	
-	public static void writeIndividualsToCsv(String csvWriter, int g, String string, ArrayList<Individual> population2) {
-		//
+	public static void writeIndividualsToCsv() {
+		//TODO
 	}
 	
 	public static void logPopulation(List<Individual> offspring) {
@@ -61,7 +64,7 @@ public class GeneticExecutor {
         return populationSorted;
 	}
 	
-	public static void main (String[] args){
+	public static void main (String[] args) throws IOException{
 		/*
 		args = getattr(module_, configuration.args_gen)(configuration.size);
 		kwargs = getattr(module_, configuration.kwargs_gen)(configuration.size);*/
@@ -73,8 +76,7 @@ public class GeneticExecutor {
 		logger.info("Max estimated fitness evaluations: " +
 				FitnessFunction.estimateFitnessEvaluations(Config.generations, Config.populationSize, Config.mutationProb));
 		
-		List<Individual> profiles = new ArrayList<>();
-		profiles = wcetGenerator(); 
+		List<Individual> profiles = wcetGenerator(); 
 		Utils.ppWcetProfiles(profiles);
 		
     	System.out.println("Worst case input: " + profiles.get(0).getConstraintSet().toString());
@@ -84,7 +86,7 @@ public class GeneticExecutor {
 	}
 	
 
-	public static List<Individual> wcetGenerator(){
+	public static List<Individual> wcetGenerator() throws IOException{
 			    
 	    //Initialize the CSV writer.
 		//TODO: String csvWriter = null;
@@ -94,6 +96,14 @@ public class GeneticExecutor {
 			                                    lineterminator='\n');
 		else csvWriter.writeheader();
 		*/
+		
+		/*WRITE ON CSV
+		String csvFile = "/Users/Federico/Desktop/csvTest.csv";
+		FileWriter writer = new FileWriter(csvFile);
+		CSVUtils.writeLine(writer, Arrays.asList("aaa", "bbb", "cc,c"), ',', '"');
+		writer.flush();
+		writer.close();*/
+		
 		
 		ArrayList<Individual> population = new ArrayList<Individual>();
 		
@@ -120,15 +130,14 @@ public class GeneticExecutor {
         	logger.info("generation " + g + " :");
             if(g % Config.localSearchRate == 0 && g > 0) {     	
                 Individual best = hof.getBestIndividuals().get(0);
-           
                 LocalSearchAlgorithm lsa = LocalSearchAlgorithm.makeLocalSearchHillClimbing();              
                 Individual optimizedBest = lsa.localSearch(best.cloneIndividual());
-                
+                System.out.println(best);
+                System.out.println(optimizedBest);
                 if (optimizedBest.getFitness() > best.getFitness()) {
                     population.remove(best);
                     population.add(0, optimizedBest);
                 }
-                
                 logger.debug("local search stats:");
                 logPopulationStats(population);
             }

@@ -1,7 +1,6 @@
 package complexity.ga;
 import java.util.*;
 
-import complexity.ga.algo.GeneticExecutor;
 import complexity.se.Constraint;
 import complexity.se.Model;
 import complexity.se.Symex;

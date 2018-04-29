@@ -37,7 +37,7 @@ public class testSelection {
 	}
 	
 	@Test
-	@DisplayName("selection returns couples different from each other")
+	@DisplayName("selection returns pairs different from each other")
 	public void testSelection2() {
 		for(int i = 0; i < parents().size(); i++) {
 			Individual ind = parents().get(i).cloneIndividual();
