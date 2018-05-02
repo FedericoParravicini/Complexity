@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @DisplayName("Individual test suite")
-public class testIndividual {
+public class TestIndividual {
 	
 	//TestSuite -> randomIndividual
 	@Test

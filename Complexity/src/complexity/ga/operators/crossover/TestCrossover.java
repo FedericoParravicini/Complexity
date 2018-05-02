@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @DisplayName("Crossover test suite")
-public class testCrossover {
+public class TestCrossover {
 	/*
 	@Test
 	@DisplayName("Combine returns ...")

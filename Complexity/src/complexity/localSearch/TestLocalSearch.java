@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("Local Search test suite")
-public class testLocalSearch {
+public class TestLocalSearch {
 
 	@Test
 	@DisplayName("LocalSearch return is not null")

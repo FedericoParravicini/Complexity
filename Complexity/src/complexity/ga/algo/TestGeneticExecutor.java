@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DisplayName("Genetic Executor test suite")
-public class testGeneticExecutor {
+public class TestGeneticExecutor {
 	
 	public ArrayList<Individual> population() {
 		ArrayList<Individual> population = new ArrayList<>();

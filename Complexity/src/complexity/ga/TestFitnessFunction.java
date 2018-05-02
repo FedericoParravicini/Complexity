@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @DisplayName("FitnessFunction test suite")
-public class testFitnessFunction {
+public class TestFitnessFunction {
 	
 	//TestSuite -> evaluate
 	@Test

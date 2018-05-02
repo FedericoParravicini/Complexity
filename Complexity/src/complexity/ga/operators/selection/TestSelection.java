@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @DisplayName("Selection test suite")
-public class testSelection {
+public class TestSelection {
 	
 	public ArrayList<Individual> parents() {
 		ArrayList<Individual> population = new ArrayList<>();

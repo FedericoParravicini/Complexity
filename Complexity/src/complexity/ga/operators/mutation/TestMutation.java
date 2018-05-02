@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 @DisplayName("Mutation Function test suite")
-public class testMutation {
+public class TestMutation {
 
 	public List<List<Constraint>> constraints() {
 		Individual ind1 = Individual.randomIndividual();
