@@ -47,10 +47,8 @@ public class SinglePointCrossover extends CrossoverFunction {
 	
 	private List<Constraint> combine(List<Constraint> constraints1, List<Constraint> constraints2){
 		List<Constraint> result = new ArrayList<>(constraints1);
-	
 		for (Constraint c2: constraints2) {
 			List<Constraint> slice = Symex.makeEngine().formulaSlicing(result, c2);
-	
 			if (slice.isEmpty()) {
 				result.add(c2);
 			} else if (!slice.get(0).equals(Constraint.TRUE) && !slice.get(0).equals(Constraint.FALSE)) {
