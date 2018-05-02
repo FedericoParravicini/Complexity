@@ -202,9 +202,9 @@ public class GeneticExecutor {
             #    config.evolution_csv.flush()
 			*/
             
-            List<Individual> elite = new ArrayList<>();
-            elite.addAll(offspring);
-            elite = elitism(elite, eliteSize);
+            population.addAll(offspring);
+            List<Individual> elite = elitism(population, eliteSize);
+            population.removeAll(elite);
             population = Config.selectionFunction.survivalSelection(population, Config.populationSize - eliteSize);
             population.addAll(elite);
             population = elitism(population, population.size());
