@@ -73,4 +73,5 @@ public class TestGeneticExecutor {
 		List<Individual> profiles = GeneticExecutor.wcetGenerator();
 		assertFalse(profiles.isEmpty());
 	}
+
 }

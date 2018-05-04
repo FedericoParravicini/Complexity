@@ -47,10 +47,4 @@ public class TestSelection {
 		}
 	}
 	
-	//@Test TODO
-	@DisplayName("survivalSelection returns ...")
-	public void testSurvivalSelection1() {
-		
-	}
-	
 }

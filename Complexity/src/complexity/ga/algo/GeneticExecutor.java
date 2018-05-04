@@ -4,7 +4,7 @@ import java.util.*;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
-import java.io.FileWriter;
+//import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.Math; 
 
@@ -12,8 +12,9 @@ import complexity.ga.FitnessFunction;
 import complexity.ga.Individual;
 import complexity.localSearch.*;
 import complexity.utils.HallOfFame;
+import complexity.utils.SortIndividuals;
 import complexity.utils.Utils;
-import complexity.utils.CSVUtils;
+//import complexity.utils.CSVUtils;
 import complexity.utils.Config;
 
 public class GeneticExecutor {
@@ -28,7 +29,8 @@ public class GeneticExecutor {
 	
 	public static void logPopulation(List<Individual> offspring) {
 		for(int i = 0; i < offspring.size(); i++) {
-			logger.debug(i + ". " + offspring.get(i).toString());
+			int id = i + 1;
+			logger.debug(id + ". " + offspring.get(i).toString());
 		}
 	}
 	
@@ -36,7 +38,7 @@ public class GeneticExecutor {
 		ArrayList<Integer> fitnesses = new ArrayList<Integer>();
 		int sum = 0;
 		
-		for(int i=0; i < offspring.size(); i++){
+		for(int i = 0; i < offspring.size(); i++){
 			fitnesses.add(offspring.get(i).fitness);
 			sum += offspring.get(i).fitness;
 			}
@@ -49,17 +51,15 @@ public class GeneticExecutor {
 	}
 	
 	//Sort population by fitness value and return the first n individuals of the population
-	public static ArrayList<Individual> elitism(List<Individual> offspring, int n) {
+	public static ArrayList<Individual> elitism(List<Individual> population, int n) {
 		ArrayList<Individual> populationSorted = new ArrayList<>();
-		Collections.sort(offspring, new Comparator<Individual>() {
-			@Override
-			public int compare (Individual ind2, Individual ind1) {
-				Integer ind = new Integer(ind1.fitness); 
-				return ind.compareTo(ind2.fitness);
-			}
-		});
+		ArrayList<Individual> newPopulation = new ArrayList<>();
+		for(int i = 0; i < population.size(); i++) {
+			newPopulation.add(population.get(i).cloneIndividual());
+		}
+		Collections.sort(newPopulation, new SortIndividuals());
 		for(int i = 0; i < n; i++) {
-			populationSorted.add(offspring.get(i));
+			populationSorted.add(newPopulation.get(i));
 		}
         return populationSorted;
 	}
@@ -118,12 +118,13 @@ public class GeneticExecutor {
 		
 		
 		logPopulation(population);
-		population = elitism(population, Config.populationSize);
+		//Collections.sort(population, new SortIndividuals());
 		hof.update(population);
 		
 		logger.debug("hall of fame:");
 		for(int i = 0; i < hof.getN(); i++) {
-			logger.debug(i + ". " + hof.getBestIndividuals().get(i).toString());
+			int id = i + 1;
+			logger.debug(id + ". " + hof.getBestIndividuals().get(i).toString());
 		}
 
         for(int g = 1; g <= Config.generations; g++) {    	
@@ -175,7 +176,7 @@ public class GeneticExecutor {
             	Individual offspring2 = parentIterator.next().cloneIndividual();
             	offspring.addAll(Config.crossoverFunction.crossover(offspring1, offspring2));
             }
-            offspring = elitism(offspring, offspring.size());
+            //Collections.sort(offspring, new SortIndividuals());
             
             logger.debug("offspring after crossover and mutation:");
             logPopulation(offspring);
@@ -207,7 +208,7 @@ public class GeneticExecutor {
             population.removeAll(elite);
             population = Config.selectionFunction.survivalSelection(population, Config.populationSize - eliteSize);
             population.addAll(elite);
-            population = elitism(population, population.size());
+            //Collections.sort(population, new SortIndividuals());
             hof.update(population);
             System.out.println("best: " + hof.getBestIndividuals().get(0));
 
@@ -217,7 +218,8 @@ public class GeneticExecutor {
             
             logger.debug("hall of fame: ");
     		for(int i = 0; i < hof.getN(); i++) {
-    			logger.debug(i + ". " + hof.getBestIndividuals().get(i).toString());
+    			int id = i + 1;
+    			logger.debug(id + ". " + hof.getBestIndividuals().get(i).toString());
     		}
 
             /*if(config.get("evolutionCsv") != null) {

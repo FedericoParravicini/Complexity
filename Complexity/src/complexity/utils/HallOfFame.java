@@ -1,6 +1,7 @@
 package complexity.utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import complexity.ga.Individual;
@@ -33,5 +34,6 @@ public class HallOfFame {
 
 	public void update(List<Individual> population) {
 		bestIndividuals = population;
+		Collections.sort(bestIndividuals, new SortIndividuals());
 	}
 }

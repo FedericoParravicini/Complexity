@@ -41,7 +41,8 @@ public abstract class Utils {
 	//Print the input profiles
 	public static void ppWcetProfiles(List<Individual> profiles) {
     	for(int i = 0; i < profiles.size(); i++){
-        	System.out.println("id: " + i);
+        	int id = i + 1;
+    		System.out.println("id: " + id);
         	System.out.println("cost: " + profiles.get(i).getFitness());
         	//TODO:
         	//System.out.println("complete: {profile.complete!r}");
