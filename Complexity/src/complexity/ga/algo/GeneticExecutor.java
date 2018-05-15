@@ -118,7 +118,7 @@ public class GeneticExecutor {
 		
 		
 		logPopulation(population);
-		//Collections.sort(population, new SortIndividuals());
+		Collections.sort(population, new SortIndividuals());
 		hof.update(population);
 		
 		logger.debug("hall of fame:");
@@ -176,7 +176,7 @@ public class GeneticExecutor {
             	Individual offspring2 = parentIterator.next().cloneIndividual();
             	offspring.addAll(Config.crossoverFunction.crossover(offspring1, offspring2));
             }
-            //Collections.sort(offspring, new SortIndividuals());
+            Collections.sort(offspring, new SortIndividuals());
             
             logger.debug("offspring after crossover and mutation:");
             logPopulation(offspring);
@@ -208,7 +208,7 @@ public class GeneticExecutor {
             population.removeAll(elite);
             population = Config.selectionFunction.survivalSelection(population, Config.populationSize - eliteSize);
             population.addAll(elite);
-            //Collections.sort(population, new SortIndividuals());
+            Collections.sort(population, new SortIndividuals());
             hof.update(population);
             System.out.println("best: " + hof.getBestIndividuals().get(0));
 

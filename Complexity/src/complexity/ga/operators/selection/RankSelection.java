@@ -1,10 +1,12 @@
 package complexity.ga.operators.selection;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import complexity.ga.Individual;
 import complexity.utils.RandomSingleton;
+import complexity.utils.SortIndividuals;
 
 public class RankSelection extends SelectionFunction {
 
@@ -24,7 +26,8 @@ public class RankSelection extends SelectionFunction {
 	
 	@Override
 	protected Individual selectIndividual(List<Individual> individuals) {
-		//Collections.sort(individuals, new SortIndividuals());
+		Collections.sort(individuals, new SortIndividuals());
+		Collections.reverse(individuals);
         List<Integer> ranking = rankSelection(individuals);
         int rankSum = 0;
         for(int i = 0; i < ranking.size(); i++){
